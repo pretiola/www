@@ -4,3 +4,7 @@
 *.swp
 node_modules
 static/pictures/optimized/
+static/favicon-*.png
+static/apple-touch-icon.png
+static/android-chrome-*.png
+static/favicon.ico

@@ -9,7 +9,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:css": "npx @tailwindcss/cli -i ./static/css/styles.css -o ./static/css/tailwind.css --minify",
-    "build:images": "node scripts/optimize-images.js"
+    "build:images": "node scripts/optimize-images.js",
+    "build:favicon": "node scripts/generate-favicon.js"
   },
   "keywords": [],
   "author": "",

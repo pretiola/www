@@ -1,0 +1,16 @@
+[package]
+name = "pretiola"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+actix-web = "4"
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+actix-files = "0.6"
+tera = "1"
+env_logger = "0.10"
+log = "0.4"
+chrono = "0.4.44"
+
+[dev-dependencies]
+reqwest = "0.12"

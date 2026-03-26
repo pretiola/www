@@ -1,0 +1,25 @@
+{
+  "name": "pretiola-website-template",
+  "version": "1.0.0",
+  "description": "Pretiola website template with Actix-web, Tera, Tailwind CSS, and Sharp image pipeline",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "npx @tailwindcss/cli -i ./static/css/styles.css -o ./static/css/tailwind.css --minify",
+    "build:images": "node scripts/optimize-images.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.2.2",
+    "autoprefixer": "^10.4.27",
+    "postcss": "^8.5.8",
+    "sharp": "^0.33.2",
+    "tailwindcss": "^4.2.2"
+  }
+}

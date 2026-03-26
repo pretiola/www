@@ -1,0 +1,123 @@
+@import "tailwindcss";
+@source "../../templates";
+
+/* Base semantic resets */
+@layer base {
+  body {
+    background-color: #f9fafb;
+    color: #000000;
+    @apply font-serif antialiased;
+  }
+}
+
+/* Gallery carousel */
+.gallery-viewport {
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+.gallery-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+.gallery-track > * {
+  min-width: 100%;
+  flex-shrink: 0;
+}
+.gallery-track img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  cursor: pointer;
+}
+@media (min-width: 640px) {
+  .gallery-track img {
+    height: 380px;
+  }
+}
+.gallery-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+.gallery-btn {
+  background: #6b7280;
+  color: white;
+  border: none;
+  border-radius: 9999px;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.gallery-btn:hover {
+  background: #4b5563;
+}
+.gallery-dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 9999px;
+  border: none;
+  background: #ccc;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s;
+}
+.gallery-dot.active {
+  background: #6b7280;
+}
+
+/* Lightbox */
+#gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+#gallery-lightbox.active {
+  visibility: visible;
+  opacity: 1;
+}
+.lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+}
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+.lightbox-content img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 0.5rem;
+}
+.lightbox-close {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  background: white;
+  color: #333;
+  border: none;
+  border-radius: 9999px;
+  width: 2.2rem;
+  height: 2.2rem;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}

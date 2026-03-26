@@ -1,0 +1,6 @@
+/target
+/target/
+.DS_Store
+*.swp
+node_modules
+static/pictures/optimized/

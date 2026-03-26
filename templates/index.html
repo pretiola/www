@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Welcome to My Site. A minimal Actix-web + Tera + Tailwind template.">
+  <meta name="keywords" content="Template, Website, Actix, Tera, Tailwind">
+  <meta property="og:title" content="My Site">
+  <meta property="og:description" content="A minimal Actix-web + Tera + Tailwind template.">
+  <meta property="og:type" content="website">
+  <title>My Site</title>
+  <link href="/css/tailwind.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-50 text-gray-900 font-serif leading-normal tracking-normal overflow-x-hidden">
+
+  <header class="sticky top-0 z-50 shadow-md">
+    {% include "navbar.html" %}
+  </header>
+
+  <main class="container mx-auto px-0 md:px-4 py-8 max-w-4xl">
+    <!-- Hero -->
+    <section id="welcome" class="mb-12">
+      <article class="text-center mb-8">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 px-4 md:px-0">Welcome to My Site</h1>
+        <h2 class="text-xl md:text-2xl text-gray-600 font-medium leading-relaxed px-4 md:px-0">
+          This is a minimal Actix-web + Tera + Tailwind template. Edit this page to get started.
+        </h2>
+      </article>
+    </section>
+
+    <!-- Sample Image -->
+    <section class="mb-12 px-4 md:px-0">
+      <picture>
+        <source type="image/webp"
+          srcset="/pictures/optimized/sample_1200w.webp 1200w, /pictures/optimized/sample_800w.webp 800w, /pictures/optimized/sample_400w.webp 400w"
+          sizes="(max-width: 640px) 100vw, 800px">
+        <source type="image/jpeg"
+          srcset="/pictures/optimized/sample_1200w.jpg 1200w, /pictures/optimized/sample_800w.jpg 800w, /pictures/optimized/sample_400w.jpg 400w"
+          sizes="(max-width: 640px) 100vw, 800px">
+        <img src="/pictures/optimized/sample_800w.jpg" alt="Sample image" class="w-full rounded-lg shadow-md">
+      </picture>
+    </section>
+
+    <!-- Content placeholder -->
+    <section class="mb-12 px-4 md:px-0">
+      <article class="bg-white rounded-lg shadow-md p-6 md:p-8 max-w-[800px] mx-auto space-y-4 text-gray-800 leading-relaxed">
+        <h3 class="text-2xl font-bold text-gray-900">Getting Started</h3>
+        <p>Drop your HTML content into the <code class="bg-gray-100 px-1 rounded">templates/</code> directory. Any <code class="bg-gray-100 px-1 rounded">.html</code> file you add will automatically be routable at <code class="bg-gray-100 px-1 rounded">/{filename}.html</code> and included in the sitemap.</p>
+        <p>Add images to <code class="bg-gray-100 px-1 rounded">static/pictures/</code> and run <code class="bg-gray-100 px-1 rounded">npm run build:images</code> to generate optimized responsive variants.</p>
+        <p>Edit <code class="bg-gray-100 px-1 rounded">static/css/styles.css</code> to customize your Tailwind styles, then run <code class="bg-gray-100 px-1 rounded">npm run build:css</code> to compile.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    {% include "footer.html" %}
+  </footer>
+
+</body>
+</html>

@@ -29,6 +29,7 @@ COPY static static
 COPY scripts scripts
 RUN npm run build:css
 RUN npm run build:images
+RUN npm run build:favicon
 
 # Runtime stage
 FROM debian:bookworm-slim
@@ -47,6 +48,12 @@ COPY templates /app/templates
 # Override with compiled css and optimized images from asset-builder
 COPY --from=asset-builder /app/static/css/tailwind.css /app/static/css/tailwind.css
 COPY --from=asset-builder /app/static/pictures/optimized/ /app/static/pictures/optimized/
+COPY --from=asset-builder /app/static/favicon.ico /app/static/favicon.ico
+COPY --from=asset-builder /app/static/favicon-16x16.png /app/static/favicon-16x16.png
+COPY --from=asset-builder /app/static/favicon-32x32.png /app/static/favicon-32x32.png
+COPY --from=asset-builder /app/static/apple-touch-icon.png /app/static/apple-touch-icon.png
+COPY --from=asset-builder /app/static/android-chrome-192x192.png /app/static/android-chrome-192x192.png
+COPY --from=asset-builder /app/static/android-chrome-512x512.png /app/static/android-chrome-512x512.png
 
 ENV RUST_LOG="info"
 EXPOSE 8080

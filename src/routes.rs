@@ -26,8 +26,7 @@ fn render_page(page: &str, tera: web::Data<Tera>) -> HttpResponse {
 }
 
 const PARTIALS: &[&str] = &["navbar.html", "footer.html"];
-// TODO: set to your production domain
-const BASE_URL: &str = "https://example.com";
+const BASE_URL: &str = "https://pretiola.org";
 
 pub async fn sitemap(tera: web::Data<Tera>) -> impl Responder {
     let mut urls = Vec::new();

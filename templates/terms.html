@@ -1,28 +1,74 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Terms of Use">
-  <meta property="og:title" content="Terms of Use">
-  <meta property="og:type" content="website">
-  <title>Terms of Use - My Site</title>
-  <link href="/css/tailwind.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | Pretiola</title>
+    <meta name="description" content="Terms of Service for the Pretiola Initiative.">
+    <link href="/static/css/tailwind.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-gray-50 text-gray-900 font-serif leading-normal tracking-normal overflow-x-hidden">
-  <header class="sticky top-0 z-50 shadow-md">
+<body class="bg-brand-parchment text-brand-ink font-sans antialiased selection:bg-brand-gold selection:text-white parchment-texture">
+
     {% include "navbar.html" %}
-  </header>
-  <main class="container mx-auto px-0 md:px-4 py-8 max-w-4xl">
-    <h1 class="text-4xl font-bold text-center mb-8 text-gray-900 px-4 md:px-0">Terms of Use</h1>
-    <article class="bg-white rounded-lg shadow-md p-6 md:p-8 max-w-[800px] mx-auto mb-12 space-y-6 text-gray-800 leading-relaxed">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-    </article>
-  </main>
-  <footer>
+
+    <main class="pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+            <p class="font-serif text-lg uppercase tracking-[0.3em] text-brand-gold mb-4">Legal Framework</p>
+            <h1 class="font-serif text-4xl md:text-5xl text-brand-brown mb-4">Terms of Service</h1>
+            <div class="w-24 h-[2px] bg-brand-gold mx-auto mb-4"></div>
+            <p class="font-sans italic text-lg text-brand-ink/70">Last Updated: March 2026</p>
+        </div>
+
+        <div class="legal-content bg-brand-cream p-8 md:p-12 border border-brand-gold/30 shadow-xl relative">
+            <p>Welcome to the Pretiola Initiative. By accessing or using our website and services, you explicitly agree to be bound by these Terms of Service ("Terms"). If you do not agree to all the terms and conditions of this agreement, you are strictly prohibited from using the site.</p>
+
+            <h2>1. Canonical and Organizational Status</h2>
+            <p>The Pretiola Initiative operates exclusively as an independent, private <em>de facto</em> association of the faithful. We exercise the rights of lay Catholics under <strong>Canon 215</strong> of the Code of Canon Law to found and direct associations for charitable purposes. You explicitly acknowledge that:</p>
+            <ul>
+                <li>Pretiola is <strong>not</strong> an official entity, agency, or dicastery of the Holy See, the Roman Curia, or any local Diocese.</li>
+                <li>Pretiola does not assume the legal title "Catholic" under the canonical norms of Canon 300.</li>
+                <li>All operations are private endeavors conducted independently by the founding members.</li>
+            </ul>
+
+            <h2>2. Non-Custodial Informational Interface</h2>
+            <p>The Pretiola website serves as a read-only graphical user interface and strategic advisory portal. We display public blockchain routing information (e.g., persistent forwarding addresses) designed to facilitate charitable micro-donations directly to authorized recipient entities (e.g., the Sr. Dolores Foundation).</p>
+            <p><strong>We are strictly non-custodial.</strong> Pretiola is not a bank, a Crypto-Asset Service Provider (CASP), an exchange, or a wallet provider. At no point do we take possession of, custody, control, route, or execute the transfer of your digital assets or fiat currency.</p>
+
+            <h2>3. Assumption of Risk with Digital Assets</h2>
+            <p>By utilizing any digital deposit address listed on this site to initiate a cryptographic transfer, you explicitly agree that:</p>
+            <ul>
+                <li><strong>Irreversibility:</strong> Cryptocurrency transactions are absolute and irreversible. Once broadcast to a blockchain network, funds cannot be canceled, refunded, or recovered by Pretiola or any third party.</li>
+                <li><strong>User Responsibility:</strong> You bear sole responsibility for ensuring you send the correct digital asset (e.g., EURC) on the correct supporting network (e.g., Arbitrum, Base, Ethereum). Sending unsupported assets or utilizing an incorrect network will result in the permanent loss of your funds.</li>
+                <li><strong>Network Fees &amp; Volatility:</strong> You are responsible for all gas fees associated with your transfers, and you accept the inherent risks of smart contract vulnerabilities, network congestion, and exchange rate volatility during fiat off-ramping.</li>
+            </ul>
+
+            <h2>4. Third-Party Integrations &amp; Compliance</h2>
+            <p>Our site architecture bridges Web3 capital to localized fiat accounts using independent third-party operators. Specifically, donations are routed through the Keeta Anchor network, leveraging Bridge by Stripe for fiat off-ramping, and Footprint for identity verification.</p>
+            <p>These independent entities act as the regulated CASPs. By initiating a transfer, you agree to comply with the respective Terms of Service, Anti-Money Laundering (AML) checks, and Know Your Customer (KYC) policies of these third-party operators. Pretiola assumes no liability for blocked transactions, regulatory freezing of funds, rejected KYC applications, or technical failures caused by these independent infrastructure providers.</p>
+
+            <h2>5. Intellectual Property Rights</h2>
+            <p>Unless otherwise indicated, the Site and its contents—including source code, text, graphics, user interfaces, visual designs, and logos—are the proprietary property of Pretiola and are protected by copyright, trademark, and other intellectual property laws. You may not reproduce, distribute, or commercially exploit this content without our express written permission.</p>
+
+            <h2>6. Disclaimer of Warranties</h2>
+            <p>THE SITE IS PROVIDED ON AN "AS-IS" AND "AS-AVAILABLE" BASIS. PRETIOLA EXPRESSLY DISCLAIMS ALL WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE SITE WILL BE UNINTERRUPTED, ERROR-FREE, OR FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS.</p>
+
+            <h2>7. Limitation of Liability</h2>
+            <p>TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT WILL PRETIOLA, ITS FOUNDERS, ADVISORS, OR AFFILIATES BE LIABLE TO YOU OR ANY THIRD PARTY FOR ANY DIRECT, INDIRECT, CONSEQUENTIAL, EXEMPLARY, INCIDENTAL, SPECIAL, OR PUNITIVE DAMAGES, INCLUDING LOST PROFIT, LOST REVENUE, LOSS OF DIGITAL ASSETS, OR LOSS OF DATA ARISING FROM YOUR USE OF THE SITE, EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+
+            <h2>8. Indemnification</h2>
+            <p>You agree to defend, indemnify, and hold harmless Pretiola and its members from and against any and all claims, damages, obligations, losses, liabilities, costs, or debt, and expenses arising from your use of the site or your violation of these Terms.</p>
+
+            <h2>9. Modifications</h2>
+            <p>We reserve the right, in our sole discretion, to make changes or modifications to these Terms at any time. Your continued use of the Site after such changes are posted signifies your acceptance of the revised Terms.</p>
+
+            <h2>10. Contact Us</h2>
+            <p>To resolve a complaint regarding the Site or to receive further information regarding use of the Site, please contact us at: <a href="mailto:contact@pretiola.org" class="text-brand-oxblood hover:text-brand-gold transition duration-200 font-bold">contact@pretiola.org</a>.</p>
+        </div>
+    </main>
+
     {% include "footer.html" %}
-  </footer>
+
 </body>
 </html>

@@ -1,10 +1,42 @@
-<div id="footer-bar" class="mt-12 mb-4 border-t border-gray-300 pt-8 pb-4">
-  <ul class="flex flex-row justify-center space-x-8 mb-8">
-    <li><a class="block text-sm font-medium p-2 hover:bg-gray-200 focus:bg-gray-200 text-black underline underline-offset-4" href="/terms.html">Terms of use</a></li>
-    <li><a class="block text-sm font-medium p-2 hover:bg-gray-200 focus:bg-gray-200 text-black underline underline-offset-4" href="/privacy.html">Privacy policy</a></li>
-  </ul>
-  <div class="text-xs text-gray-600 max-w-4xl mx-auto leading-relaxed px-4 text-center">
-    <p class="mb-2 font-bold text-gray-800 text-sm">&copy; {{ current_year }} [Site Name]. All rights reserved.</p>
-  </div>
-</div>
-<script src="/static/js/gallery.js"></script>
+{% if page_name == "index" %}
+<footer id="contact" class="bg-brand-brown text-brand-cream pt-20 pb-10 border-t-2 border-brand-gold/40">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-8">
+            <div class="max-w-xl">
+                <h2 class="font-serif text-3xl md:text-4xl mb-4">Ready to Build Together?</h2>
+                <p class="text-brand-vellum/60 text-lg leading-relaxed">
+                    Whether you are a Catholic ministry modernizing your operational framework, or the Keeta Blockchain team exploring our technical grant brief&mdash;Pretiola is ready to build.
+                </p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+                <a href="mailto:contact@pretiola.org" class="font-serif text-lg uppercase tracking-[0.2em] bg-brand-gold text-white px-8 py-4 hover:bg-brand-goldLight transition text-center whitespace-nowrap">
+                    <i class="fa-regular fa-envelope mr-2"></i> Contact Advisory Team
+                </a>
+            </div>
+        </div>
+
+        <div class="border-t border-brand-gold/20 pt-10 flex flex-col lg:flex-row justify-between text-lg text-brand-vellum/50 gap-8">
+            <div class="lg:w-2/4">
+                <span class="font-display text-2xl text-brand-cream tracking-wider block mb-4">Pretiola</span>
+                <p>&copy; {{ current_year }} Pretiola Initiative. All rights reserved.</p>
+            </div>
+            <div class="lg:w-2/4 flex justify-end">
+                <div class="flex items-center gap-6 uppercase tracking-[0.2em] text-lg font-serif text-brand-gold/70">
+                    <a href="https://x.com/pretiolaorg" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 hover:text-brand-cream transition-colors">
+                        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="https://github.com/pretiola" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 hover:text-brand-cream transition-colors">
+                        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/></svg>
+                    </a>
+                    <a href="/privacy.html" class="hover:text-brand-cream transition-colors">Privacy</a>
+                    <a href="/terms.html" class="hover:text-brand-cream transition-colors">Terms</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+{% else %}
+<footer class="bg-brand-brown text-brand-cream py-8 border-t-2 border-brand-gold/40 text-center uppercase tracking-widest font-serif">
+    <p class="text-brand-vellum/50 text-lg">&copy; {{ current_year }} Pretiola Initiative. All rights reserved.</p>
+</footer>
+{% endif %}

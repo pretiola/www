@@ -23,9 +23,9 @@ async fn health_check_works() {
 
     assert!(response.status().is_success());
     let body = response.text().await.expect("Failed to get body");
-    assert!(body.contains("Welcome to My Site"));
-    assert!(body.contains("Home"));
-    assert!(body.contains("Getting Started"));
+    assert!(body.contains("Pretiola"));
+    assert!(body.contains("Driving Real Change"));
+    assert!(body.contains("Advisory"));
 }
 
 #[actix_web::test]
@@ -92,7 +92,7 @@ async fn sitemap_returns_valid_xml() {
 
     let body = response.text().await.expect("Failed to get body");
     assert!(body.contains("<urlset"));
-    assert!(body.contains("example.com"));
+    assert!(body.contains("pretiola.org"));
     // Should include content pages
     assert!(body.contains("index.html"));
     assert!(body.contains("terms.html"));

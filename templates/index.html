@@ -1,62 +1,416 @@
-<!doctype html>
-<html lang="en">
-
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Welcome to My Site. A minimal Actix-web + Tera + Tailwind template.">
-  <meta name="keywords" content="Template, Website, Actix, Tera, Tailwind">
-  <meta property="og:title" content="My Site">
-  <meta property="og:description" content="A minimal Actix-web + Tera + Tailwind template.">
-  <meta property="og:type" content="website">
-  <title>My Site</title>
-  <link href="/css/tailwind.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pretiola | Strategic &amp; Technological Advisory for Charitable Missions</title>
+    <meta name="description" content="Pretiola provides full advisory services bridging canonical fidelity with next-generation decentralized finance.">
+    <meta property="og:title" content="Pretiola | Strategic & Technological Advisory for Charitable Missions">
+    <meta property="og:description" content="Pretiola provides full advisory services bridging canonical fidelity with next-generation decentralized finance.">
+    <meta property="og:type" content="website">
+    <link href="/static/css/tailwind.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+<body class="bg-brand-parchment text-brand-ink font-sans antialiased selection:bg-brand-gold selection:text-white">
 
-<body class="bg-gray-50 text-gray-900 font-serif leading-normal tracking-normal overflow-x-hidden">
-
-  <header class="sticky top-0 z-50 shadow-md">
+    <!-- Navigation -->
     {% include "navbar.html" %}
-  </header>
 
-  <main class="container mx-auto px-0 md:px-4 py-8 max-w-4xl">
     <!-- Hero -->
-    <section id="welcome" class="mb-12">
-      <article class="text-center mb-8">
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 px-4 md:px-0">Welcome to My Site</h1>
-        <h2 class="text-xl md:text-2xl text-gray-600 font-medium leading-relaxed px-4 md:px-0">
-          This is a minimal Actix-web + Tera + Tailwind template. Edit this page to get started.
-        </h2>
-      </article>
+    <section id="home" class="relative pt-32 pb-24 lg:pt-48 lg:pb-36 overflow-hidden bg-brand-brown text-brand-cream vignette">
+        <!-- Decorative arch SVG -->
+        <div class="absolute inset-0 opacity-[0.06] pointer-events-none">
+            <svg class="absolute inset-0 w-full h-full" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+                <pattern id="arches" x="0" y="0" width="200" height="300" patternUnits="userSpaceOnUse">
+                    <path d="M0 300 L0 150 Q0 50 100 50 Q200 50 200 150 L200 300" fill="none" stroke="#DAA520" stroke-width="1.5"/>
+                    <circle cx="100" cy="80" r="8" fill="none" stroke="#DAA520" stroke-width="0.8"/>
+                </pattern>
+                <rect width="100%" height="100%" fill="url(#arches)"/>
+            </svg>
+        </div>
+
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="ornamental-rule text-lg mb-8">
+                <span class="font-serif tracking-[0.3em] uppercase text-brand-goldLight text-lg">Christian Tradition &middot; Modern Execution</span>
+            </div>
+            <h1 class="font-display text-4xl md:text-6xl lg:text-7xl mb-6 leading-tight text-brand-cream">
+                Driving Real Change
+            </h1>
+            <p class="font-serif text-2xl md:text-3xl italic text-brand-goldLight mb-8 tracking-wide">Through Technology.</p>
+            <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-brand-vellum/80 mb-12 leading-relaxed font-light">
+                A full advisory service for technology, strategy, and communications empowering Catholic associations, ministries, and charities to deploy capital globally with radical Web3 transparency while staying strictly aligned with Holy See guidelines.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-5">
+                <a href="#advisory" class="font-serif text-lg uppercase tracking-[0.2em] bg-brand-gold text-white px-10 py-4 hover:bg-brand-goldLight transition border border-brand-goldLight/30">Explore Services</a>
+                <a href="#technology" class="font-serif text-lg uppercase tracking-[0.2em] border-2 border-brand-cream/30 text-brand-cream px-10 py-4 hover:border-brand-goldLight hover:text-brand-goldLight transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-code"></i> Keeta Integration
+                </a>
+            </div>
+        </div>
     </section>
 
-    <!-- Sample Image -->
-    <section class="mb-12 px-4 md:px-0">
-      <picture>
-        <source type="image/webp"
-          srcset="/pictures/optimized/sample_1200w.webp 1200w, /pictures/optimized/sample_800w.webp 800w, /pictures/optimized/sample_400w.webp 400w"
-          sizes="(max-width: 640px) 100vw, 800px">
-        <source type="image/jpeg"
-          srcset="/pictures/optimized/sample_1200w.jpg 1200w, /pictures/optimized/sample_800w.jpg 800w, /pictures/optimized/sample_400w.jpg 400w"
-          sizes="(max-width: 640px) 100vw, 800px">
-        <img src="/pictures/optimized/sample_800w.jpg" alt="Sample image" class="w-full rounded-lg shadow-md">
-      </picture>
+    <!-- Decorative divider -->
+    <div class="bg-brand-parchment py-4 text-center cross-ornament"></div>
+
+    <!-- About / Ecclesial Foundation -->
+    <section id="about" class="py-24 parchment-texture">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <p class="font-serif text-lg uppercase tracking-[0.3em] text-brand-gold mb-4">Ecclesial Foundation</p>
+                    <h3 class="font-serif text-3xl md:text-4xl text-brand-brown mb-8 leading-tight">Independent, Agile, and Canonically Sound.</h3>
+                    <div class="drop-cap">
+                        <p class="text-brand-ink/80 mb-5 text-lg leading-relaxed">
+                            Traditional philanthropy is often slow and constrained by geographic banking borders. Conversely, many grassroots Catholic ministries lack the structural sophistication to accept modern, global capital safely. Pretiola bridges this gap through a carefully designed, minimalist legal structure.
+                        </p>
+                    </div>
+                    <div class="manuscript-border p-8 mt-8 bg-brand-cream/60">
+                        <h4 class="font-serif text-lg uppercase tracking-[0.2em] text-brand-oxblood mb-4 flex items-center">
+                            <i class="fa-solid fa-scale-balanced mr-3 text-brand-gold"></i> Canonical Declaration
+                        </h4>
+                        <p class="text-lg text-brand-ink/80 leading-relaxed">
+                            Pretiola is an independent initiative of lay Catholics exercising their right to found and direct associations for charitable purposes under <strong>Canon 215 of the Code of Canon Law</strong>.
+                        </p>
+                        <p class="text-lg text-brand-ink/60 leading-relaxed mt-3">
+                            It operates as a private de facto association governed by its own internal statutes and is not an official entity of the Holy See, the Roman Curia, or the Diocese. Pretiola does not claim the title "Catholic" under the norms of <strong>Canon 300</strong>. All activities are conducted privately by the Founding Members.
+                        </p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="manuscript-border p-2">
+                        <picture>
+                            <source type="image/webp"
+                                srcset="/pictures/optimized/dali_1200w.webp 1200w, /pictures/optimized/dali_800w.webp 800w, /pictures/optimized/dali_400w.webp 400w"
+                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px">
+                            <source type="image/jpeg"
+                                srcset="/pictures/optimized/dali_1200w.jpg 1200w, /pictures/optimized/dali_800w.jpg 800w, /pictures/optimized/dali_400w.jpg 400w"
+                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px">
+                            <img src="/pictures/optimized/dali_800w.jpg" alt="Christ of Saint John of the Cross" class="object-cover h-[500px] w-full grayscale-[30%] sepia-[20%]">
+                        </picture>
+                    </div>
+                    <div class="mt-6 md:mt-0 md:absolute md:-bottom-6 md:-left-6 bg-brand-brown text-brand-cream p-8 border-2 border-brand-gold/50 max-w-xs">
+                        <span class="font-display text-brand-gold text-4xl leading-none block">&ldquo;</span>
+                        <p class="font-sans text-lg italic leading-snug mt-1">Fostering the Christian vocation in the world through works of charity and pious purposes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Content placeholder -->
-    <section class="mb-12 px-4 md:px-0">
-      <article class="bg-white rounded-lg shadow-md p-6 md:p-8 max-w-[800px] mx-auto space-y-4 text-gray-800 leading-relaxed">
-        <h3 class="text-2xl font-bold text-gray-900">Getting Started</h3>
-        <p>Drop your HTML content into the <code class="bg-gray-100 px-1 rounded">templates/</code> directory. Any <code class="bg-gray-100 px-1 rounded">.html</code> file you add will automatically be routable at <code class="bg-gray-100 px-1 rounded">/{filename}.html</code> and included in the sitemap.</p>
-        <p>Add images to <code class="bg-gray-100 px-1 rounded">static/pictures/</code> and run <code class="bg-gray-100 px-1 rounded">npm run build:images</code> to generate optimized responsive variants.</p>
-        <p>Edit <code class="bg-gray-100 px-1 rounded">static/css/styles.css</code> to customize your Tailwind styles, then run <code class="bg-gray-100 px-1 rounded">npm run build:css</code> to compile.</p>
-      </article>
-    </section>
-  </main>
+    <!-- Decorative divider -->
+    <div class="bg-brand-parchment py-4 text-center cross-ornament"></div>
 
-  <footer>
+    <!-- Advisory Pillars -->
+    <section id="advisory" class="py-24 bg-brand-cream border-y border-brand-gold/20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="font-serif text-lg uppercase tracking-[0.3em] text-brand-gold mb-4">Our Expertise</p>
+                <h3 class="font-serif text-3xl md:text-4xl text-brand-brown">Comprehensive Advisory Pillars</h3>
+                <div class="w-24 h-[2px] bg-brand-gold mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="bg-brand-parchment p-10 border border-brand-gold/30 group hover:border-brand-gold transition duration-300">
+                    <div class="w-14 h-14 border border-brand-gold/40 flex items-center justify-center mb-6 group-hover:bg-brand-oxblood group-hover:border-brand-oxblood transition">
+                        <i class="fa-solid fa-microchip text-xl text-brand-rust group-hover:text-brand-cream transition"></i>
+                    </div>
+                    <h4 class="text-lg font-serif uppercase tracking-wider text-brand-brown mb-3">Technology &amp; Web3</h4>
+                    <p class="text-brand-ink/70 leading-relaxed text-lg">Transitioning static digital assets into dynamic, highly secure Global Impact Hubs. We deploy robust, privacy-by-design blockchain solutions and decentralized financial rails tailored for NGOs.</p>
+                </div>
+                <div class="bg-brand-parchment p-10 border border-brand-gold/30 group hover:border-brand-gold transition duration-300 transform md:-translate-y-4">
+                    <div class="w-14 h-14 border border-brand-gold/40 flex items-center justify-center mb-6 group-hover:bg-brand-oxblood group-hover:border-brand-oxblood transition">
+                        <i class="fa-solid fa-chess-knight text-xl text-brand-rust group-hover:text-brand-cream transition"></i>
+                    </div>
+                    <h4 class="text-lg font-serif uppercase tracking-wider text-brand-brown mb-3">Strategic Structuring</h4>
+                    <p class="text-brand-ink/70 leading-relaxed text-lg">Advising on the absolute minimal canonical formalities required to operate effectively. We help structure <em>de facto</em> private associations and localized civil registrations like community based organizations (CBOs) to eliminate bureaucratic friction.</p>
+                </div>
+                <div class="bg-brand-parchment p-10 border border-brand-gold/30 group hover:border-brand-gold transition duration-300">
+                    <div class="w-14 h-14 border border-brand-gold/40 flex items-center justify-center mb-6 group-hover:bg-brand-oxblood group-hover:border-brand-oxblood transition">
+                        <i class="fa-solid fa-bullhorn text-xl text-brand-rust group-hover:text-brand-cream transition"></i>
+                    </div>
+                    <h4 class="text-lg font-serif uppercase tracking-wider text-brand-brown mb-3">Impact Communications</h4>
+                    <p class="text-brand-ink/70 leading-relaxed text-lg">Developing media strategies allowing for human dignity to flourish and in strict compliance with international child safeguarding protocols. We translate real-world impact into transparent data while navigating regulatory requirements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Uganda PoC -->
+    <section id="poc" class="py-24 parchment-texture">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                <p class="font-serif text-lg uppercase tracking-[0.3em] text-brand-gold mb-4">Proof-of-Concept</p>
+                <h3 class="font-serif text-3xl md:text-4xl text-brand-brown mb-2">The Sr. Dolores Foundation, Uganda</h3>
+                VISIT: <a href="https://srdolores-foundation.it" target="_blank" rel="noopener noreferrer" class="inline-block font-serif text-lg text-brand-gold hover:text-brand-oxblood tracking-wider transition mb-6">srdolores-foundation.it &rarr;</a>
+                <div class="w-24 h-[2px] bg-brand-gold mx-auto mb-8"></div>
+                <p class="text-brand-ink/70 text-lg leading-relaxed">
+                    We are in collaboration with Father Emmanuel Kasibante to develop the operational model for a localized initiative in the village of Binzi. By working as an informal local community based organization, the foundation bypasses national bureaucratic friction while Pretiola bridges international seed capital directly to tangible impact across Four Core Pillars.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-brand-cream p-8 border border-brand-gold/25 relative group hover:border-brand-gold/60 transition">
+                    <div class="absolute top-4 right-4 text-brand-gold/30 text-4xl font-display">I</div>
+                    <i class="fa-solid fa-faucet-drip text-2xl text-blue-800/70 mb-6 block"></i>
+                    <h4 class="font-serif uppercase tracking-wider text-brand-brown mb-3 text-lg">WASH Infrastructure</h4>
+                    <p class="text-lg text-brand-ink/65 leading-relaxed">Funding the rapid installation of water systems and boreholes, managed locally by formalized Water User Committees to ensure full utilization during the lifetime of the infrastructure.</p>
+                </div>
+                <div class="bg-brand-cream p-8 border border-brand-gold/25 relative group hover:border-brand-gold/60 transition">
+                    <div class="absolute top-4 right-4 text-brand-gold/30 text-4xl font-display">II</div>
+                    <i class="fa-solid fa-people-roof text-2xl text-green-800/70 mb-6 block"></i>
+                    <h4 class="font-serif uppercase tracking-wider text-brand-brown mb-3 text-lg">Family Welfare &amp; Sustainable Agriculture</h4>
+                    <p class="text-lg text-brand-ink/65 leading-relaxed">Deploying the &ldquo;Pass-on-the-Gift&rdquo; livestock and seed model while transitioning subsistence farmers into the modern monetary economy by formalizing agricultural cooperatives and building capital reserves. Pretiola plans to enable digital tracking of agricultural assets on-chain as they multiply across families in later phases.</p>
+                </div>
+                <div class="bg-brand-cream p-8 border border-brand-gold/25 relative group hover:border-brand-gold/60 transition">
+                    <div class="absolute top-4 right-4 text-brand-gold/30 text-4xl font-display">III</div>
+                    <i class="fa-solid fa-book-open text-2xl text-amber-800/70 mb-6 block"></i>
+                    <h4 class="font-serif uppercase tracking-wider text-brand-brown mb-3 text-lg">Scholastic Support</h4>
+                    <p class="text-lg text-brand-ink/65 leading-relaxed">Supporting underprivileged children from poor families to return to class by donating basic scholastic materials: pens, pencils, exercise books, sanitary pads, mathematical sets, rubbers, calculators, rulers, sharpeners, reading books and backpacks.</p>
+                </div>
+                <div class="bg-brand-cream p-8 border border-brand-gold/25 relative group hover:border-brand-gold/60 transition">
+                    <div class="absolute top-4 right-4 text-brand-gold/30 text-4xl font-display">IV</div>
+                    <i class="fa-solid fa-church text-2xl text-brand-oxblood/70 mb-6 block"></i>
+                    <h4 class="font-serif uppercase tracking-wider text-brand-brown mb-3 text-lg">Pastoral Care</h4>
+                    <p class="text-lg text-brand-ink/65 leading-relaxed">Guided by the teachings of Jesus Christ through the magisterium of the Roman Catholic Church with oversight in Rome, fostering lay leadership and integral ecology strictly aligned with Christian social teaching.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Keeta Technology Section -->
+    <section id="technology" class="py-24 bg-[#1a1207] text-brand-cream relative overflow-hidden border-t-2 border-brand-keeta/60">
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-keeta/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="lg:flex lg:items-center lg:justify-between gap-16">
+                <div class="lg:w-1/2">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 border border-brand-keeta/40 text-lg font-serif uppercase tracking-widest text-orange-300 mb-8">
+                        <span class="w-2 h-2 rounded-full bg-brand-keeta animate-pulse"></span>
+                        Pretiola's Keeta Grant Proposal
+                    </div>
+                    <h3 class="font-serif text-3xl md:text-5xl mb-6 leading-tight text-brand-cream">Frictionless Web3 Philanthropy via Keeta.</h3>
+                    <p class="text-white mb-10 text-lg leading-relaxed">
+                        Traditional cross-border aid is plagued by SWIFT fees, opaque FX rates, and days-long settlement. The Pretiola architecture utilizes the highly parallelized <strong class="text-brand-cream">Keeta Blockchain</strong> Directed Acyclic Graph (DAG) to solve the "last mile" problem for micro-donations to the Sr. Dolores Foundation.
+                    </p>
+
+                    <ul class="space-y-8 mb-10">
+                        <li class="flex items-start">
+                            <div class="border border-brand-keeta/40 p-3 text-orange-400 mt-1 mr-5">
+                                <i class="fa-solid fa-bolt w-5 text-center"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-serif uppercase tracking-wider text-lg">10+ million TPS &amp; 400ms Settlement</h5>
+                                <p class="text-lg text-white mt-2 leading-relaxed">Utilize Keeta's DAG structure for instant ledger updates without traditional mempool bottlenecks.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="border border-brand-keeta/40 p-3 text-orange-400 mt-1 mr-5">
+                                <i class="fa-solid fa-shield-halved w-5 text-center"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-serif uppercase tracking-wider text-lg">Compliant Tiered KYC via Anchor</h5>
+                                <p class="text-lg text-white mt-2 leading-relaxed">Risk-based Simplified Due Diligence allows friction-free crypto micro-donations (e.g., &euro;5), while larger gifts integrate Footprint's robust verification.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="border border-brand-keeta/40 p-3 text-orange-400 mt-1 mr-5">
+                                <i class="fa-solid fa-building-columns w-5 text-center"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-serif uppercase tracking-wider text-lg">Direct Fiat Off-Ramp</h5>
+                                <p class="text-lg text-white mt-2 leading-relaxed">Integrated with the Keeta Anchor and Bridge by Stripe. Stablecoins (EURC) convert instantly and settle directly into localized Ugandan IBANs via SEPA rails.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="lg:w-1/2 mt-12 lg:mt-0">
+                    <div class="bg-[#0f0d08] border border-brand-gold/20 shadow-2xl overflow-hidden font-mono text-lg relative">
+                        <div class="bg-[#1a1510] px-4 py-3 border-b border-brand-gold/20 flex items-center justify-between">
+                            <div class="flex space-x-2">
+                                <div class="w-3 h-3 rounded-full bg-brand-oxblood"></div>
+                                <div class="w-3 h-3 rounded-full bg-brand-gold"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-700"></div>
+                            </div>
+                            <span class="text-brand-vellum/50 text-lg font-serif tracking-wider">Pretiola Client SDK</span>
+                            <span class="flex items-center text-green-400 text-lg">
+                                <span class="w-2 h-2 rounded-full bg-green-400 mr-2 animate-pulse"></span> Example
+                            </span>
+                        </div>
+
+                        <div class="p-6">
+                            <div class="mb-8 p-4 border border-brand-gold/15 bg-white/[0.02]">
+                                <div class="flex justify-between text-lg mb-2">
+                                    <span class="text-brand-cream font-sans font-semibold">&euro;10,654 raised</span>
+                                    <span class="text-brand-vellum/50 font-sans">Goal: &euro;14,206</span>
+                                </div>
+                                <div class="w-full bg-brand-brown rounded-full h-2 mb-2">
+                                    <div class="bg-brand-keeta h-2 rounded-full animate-fill shadow-[0_0_10px_rgba(255,136,109,0.5)]"></div>
+                                </div>
+                                <div class="text-right text-lg text-brand-gold font-sans">71,312 micro-donations</div>
+                            </div>
+
+                            <div class="space-y-1 text-gray-300 text-lg leading-relaxed">
+                                <div class="text-gray-500 mb-3">&gt; Awaiting Keeta Network block events...</div>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="text-blue-400">import</span> { <span class="text-orange-300">UserClient</span> } <span class="text-blue-400">from</span> <span class="text-green-300">'@keetanetwork/client'</span>;
+                                </div>
+
+                                <div class="mt-4 border-l-2 border-brand-keeta pl-3 py-2 bg-white/5">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <div><span class="text-green-400 font-bold">+ &euro;5.00 EURC</span> <span class="text-gray-500">Deposit</span></div>
+                                        <div class="text-gray-500 hover:text-white cursor-pointer transition">eth:0x7f4B...a3c9</div>
+                                    </div>
+                                    <div class="flex justify-between items-center text-[10px] text-gray-400 mb-1">
+                                        <div>&darr; Anchor FX Conversion Triggered</div>
+                                        <div>400ms</div>
+                                    </div>
+                                    <div class="flex justify-between items-center mt-1 pt-1 border-t border-gray-700/50">
+                                        <div><span class="text-brand-keeta font-bold">SETTLED</span> <span class="text-gray-400">SEPA Push to IBAN</span></div>
+                                        <div class="text-gray-500">IT41T360...5858</div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-3 border-l-2 border-brand-keeta pl-3 py-2 bg-white/5">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <div><span class="text-green-400 font-bold">+ &euro;20.00 EURC</span> <span class="text-gray-500">Deposit</span></div>
+                                        <div class="text-gray-500 hover:text-white cursor-pointer transition">base:0x2eD1...b8f2</div>
+                                    </div>
+                                    <div class="flex justify-between items-center text-[10px] text-gray-400 mb-1">
+                                        <div>&darr; Anchor FX Conversion Triggered</div>
+                                        <div>380ms</div>
+                                    </div>
+                                    <div class="flex justify-between items-center mt-1 pt-1 border-t border-gray-700/50">
+                                        <div><span class="text-brand-keeta font-bold">SETTLED</span> <span class="text-gray-400">SEPA Push to IBAN</span></div>
+                                        <div class="text-gray-500">IT41T360...5858</div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-4 text-[10px] text-gray-500 flex items-center gap-2">
+                                    <i class="fa-solid fa-link"></i> Immutable Ledger Tracking Concept
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grant Proposal Summary -->
+            <div class="border-t border-brand-keeta/20 pt-8 mt-16">
+                <h5 class="font-serif uppercase tracking-wider text-brand-keeta text-lg mb-6">Grant Proposal at a Glance</h5>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-lg mb-12">
+                    <div>
+                        <p class="text-white uppercase tracking-wider text-lg mb-2">Ecosystem Impact</p>
+                        <p class="text-brand-cream leading-relaxed">First real-world charitable use case on Keeta &mdash; demonstrating low-friction, compliant micro-philanthropy globally by seamlessly bridging unhosted web3 wallets directly to traditional fiat bank accounts.</p>
+                    </div>
+                    <div>
+                        <p class="text-white uppercase tracking-wider text-lg mb-2">Grant Ask</p>
+                        <p class="text-brand-cream leading-relaxed">100,000 KTA to be held in the Pretiola treasury for future use acting as an official decentralized representative node. Staking and KUSD fees will be continuously rolled into supporting Pretiola programs and supportive infrastructure.</p>
+                    </div>
+                </div>
+
+                <h5 class="font-serif uppercase tracking-wider text-brand-keeta text-lg mb-6">Timeline &amp; Implementation Phases</h5>
+
+                <div class="space-y-6">
+                    <div class="bg-white/5 border border-white/10 p-6 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <h6 class="text-white font-serif text-lg">Phase 1: Manual Wallet Flow</h6>
+                            <span class="ml-3 bg-brand-keeta/20 text-brand-keeta text-lg uppercase tracking-wider px-2 py-1 rounded">Completed</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <span class="text-brand-keeta text-lg uppercase tracking-wider font-semibold block mb-2">Functional Requirements</span>
+                                <p class="text-brand-cream text-lg leading-relaxed">Directs donors to visit and use the standalone Keeta wallet application to process the end-to-end donation flow manually. Users are required to manually input the recipient organization's IBAN details to execute the fiat off-ramp.</p>
+                            </div>
+                            <div>
+                                <span class="text-brand-keeta text-lg uppercase tracking-wider font-semibold block mb-2">Regulatory Requirements</span>
+                                <p class="text-brand-cream text-lg leading-relaxed">Strict baseline compliance. Full Footprint KYC verification is required for all donors during wallet onboarding, regardless of the donation amount. While fully compliant, this disproportionate friction severely limits casual impulse micro-donations.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/5 border border-white/10 p-6 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <h6 class="text-white font-serif text-lg">Phase 2: Automated Routing &amp; Tiered Compliance</h6>
+                            <span class="ml-3 bg-white/10 text-white/70 text-lg uppercase tracking-wider px-2 py-1 rounded">Months 1-6</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <span class="text-brand-keeta text-lg uppercase tracking-wider font-semibold block mb-2">Functional Requirements</span>
+                                <ul class="text-brand-cream text-lg leading-relaxed list-disc pl-4 space-y-2">
+                                    <li><strong>Frictionless "Send and Done":</strong> The recipient charities utilize persistent forwarding addresses. Donors simply send stablecoins (e.g., EURC) from their existing unhosted wallets directly to these deposit addresses across supported chains.</li>
+                                    <li><strong>Automated Off-Ramp:</strong> Funds are automatically detected, converted via the Keeta Anchor, and pushed directly to the recipient's bank account without any manual user entry.</li>
+                                    <li><strong>Transparent Tracking:</strong> A live, read-only funding counter and transaction history are integrated directly into the website pulling transparently from public on-chain data.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <span class="text-brand-keeta text-lg uppercase tracking-wider font-semibold block mb-2">Regulatory Requirements</span>
+                                <ul class="text-brand-cream text-lg leading-relaxed list-disc pl-4 space-y-2">
+                                    <li><strong>Recipient KYB:</strong> The receiving organization completes a one-time comprehensive KYB (Know Your Business) verification as a trusted entity.</li>
+                                    <li><strong>Markets in Crypto-Assets Regulation (MiCA) / AMLD6 Tiered KYC:</strong> Leveraging the Keeta Anchor, compliance shifts to a risk-based model using Simplified Due Diligence (SDD):
+                                        <ul class="list-[circle] pl-5 mt-2 space-y-1 text-white/80">
+                                            <li><strong>Micro (&le;50 EUR):</strong> No user KYC required. On-chain wallet records satisfy minimal Travel Rule requirements.</li>
+                                            <li><strong>Standard (51&ndash;999 EUR):</strong> Basic identity collection (Name + Wallet Address) via a lightweight form.</li>
+                                            <li><strong>Full (&ge;1,000 EUR):</strong> Full Footprint verification triggered for large transfers prior to processing.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advisor -->
+    <section class="py-20 parchment-texture">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <p class="font-serif text-lg uppercase tracking-[0.3em] text-brand-gold mb-4">Advisor</p>
+            </div>
+            <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8 items-center">
+                <div class="md:col-span-1 flex justify-center">
+                    <div class="w-48 h-48 rounded-full overflow-hidden border-2 border-brand-gold/40 bg-gray-800">
+                        <picture>
+                            <source type="image/webp"
+                                srcset="/pictures/optimized/jourdain_1200w.webp 1200w, /pictures/optimized/jourdain_800w.webp 800w, /pictures/optimized/jourdain_400w.webp 400w"
+                                sizes="192px">
+                            <source type="image/png"
+                                srcset="/pictures/optimized/jourdain_1200w.jpg 1200w, /pictures/optimized/jourdain_800w.jpg 800w, /pictures/optimized/jourdain_400w.jpg 400w"
+                                sizes="192px">
+                            <img src="/pictures/optimized/jourdain_400w.jpg" alt="Headshot of Jourdain-Alexander Casale" class="w-full h-full object-cover scale-125">
+                        </picture>
+                    </div>
+                </div>
+                <div class="md:col-span-2 text-left">
+                    <h3 class="text-2xl font-bold text-brand-brown">Jourdain-Alexander Casale</h3>
+                    <p class="mt-4 text-lg leading-relaxed text-brand-brown/80">
+                        Jourdain-Alexander Casale is an executive and technologist with over two decades of experience building and optimizing complex digital marketplaces. After architecting Hewlett-Packard's global B2B platform, he helped get Casale Media (now Index Exchange) started, where he was a key technology leader and an early champion for header bidding. Currently serving as VP of Product Management at Index Exchange, his focus is on leveraging agentic AI to enhance platform architecture and operational efficiency. His career is marked by a deep expertise in systems analysis, platform modernization, and driving industry-wide technological shifts. He is a man dedicated to faith in God, love of family, and the advancement of peace and freedom for human civilization.
+                    </p>
+                    <div class="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-lg text-brand-brown/70">
+                        <a href="https://www.linkedin.com/in/jourdain-alexander-casale" target="_blank" rel="noopener noreferrer" class="flex items-center hover:text-brand-gold transition-colors">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"/></svg>
+                            LinkedIn
+                        </a>
+                        <a href="https://github.com/headertag" target="_blank" rel="noopener noreferrer" class="flex items-center hover:text-brand-gold transition-colors">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/></svg>
+                            GitHub: @headertag
+                        </a>
+                        <a href="https://x.com/headertag" target="_blank" rel="noopener noreferrer" class="flex items-center hover:text-brand-gold transition-colors">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                            X: @headertag
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     {% include "footer.html" %}
-  </footer>
 
 </body>
 </html>

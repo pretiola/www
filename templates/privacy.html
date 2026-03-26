@@ -1,28 +1,104 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Privacy Policy">
-  <meta property="og:title" content="Privacy Policy">
-  <meta property="og:type" content="website">
-  <title>Privacy Policy - My Site</title>
-  <link href="/css/tailwind.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Pretiola</title>
+    <meta name="description" content="Privacy Policy for the Pretiola Initiative.">
+    <link href="/static/css/tailwind.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-gray-50 text-gray-900 font-serif leading-normal tracking-normal overflow-x-hidden">
-  <header class="sticky top-0 z-50 shadow-md">
+<body class="bg-brand-parchment text-brand-ink font-sans antialiased selection:bg-brand-gold selection:text-white parchment-texture">
+
     {% include "navbar.html" %}
-  </header>
-  <main class="container mx-auto px-0 md:px-4 py-8 max-w-4xl">
-    <h1 class="text-4xl font-bold text-center mb-8 text-gray-900 px-4 md:px-0">Privacy Policy</h1>
-    <article class="bg-white rounded-lg shadow-md p-6 md:p-8 max-w-[800px] mx-auto mb-12 space-y-6 text-gray-800 leading-relaxed">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-    </article>
-  </main>
-  <footer>
+
+    <main class="pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+            <p class="font-serif text-lg uppercase tracking-[0.3em] text-brand-gold mb-4">Legal Framework</p>
+            <h1 class="font-serif text-4xl md:text-5xl text-brand-brown mb-4">Privacy Policy</h1>
+            <div class="w-24 h-[2px] bg-brand-gold mx-auto mb-4"></div>
+            <p class="font-sans italic text-lg text-brand-ink/70">Last Updated: March 2026</p>
+        </div>
+
+        <div class="legal-content bg-brand-cream p-8 md:p-12 border border-brand-gold/30 shadow-xl relative">
+            <p>This Privacy Policy explains how the Pretiola Initiative ("we," "us," or "our") collects, uses, and protects information when you visit our website. We are committed to transparency about the data we collect and how it is used.</p>
+
+            <h2>1. Information We Collect</h2>
+            <p><strong>Analytics Data (Google Analytics):</strong> We use Google Analytics, a web analytics service provided by Google LLC, to understand how visitors interact with our website. Google Analytics uses cookies and similar technologies to collect information such as:</p>
+            <ul>
+                <li>Pages visited, time spent on pages, and navigation paths</li>
+                <li>Referring websites, search terms, and traffic sources</li>
+                <li>Device type, browser type, operating system, and screen resolution</li>
+                <li>Approximate geographic location (city/region level, derived from IP address)</li>
+                <li>Demographic and interest data (age range, gender, affinity categories) when available</li>
+            </ul>
+            <p>Google Analytics may set cookies on your browser (e.g., <code>_ga</code>, <code>_gid</code>, <code>_gat</code>) to distinguish unique users and throttle request rates. These cookies may persist for up to two years. For more information on how Google processes this data, please review <a href="https://policies.google.com/privacy" class="text-brand-oxblood hover:text-brand-gold transition duration-200 font-bold" target="_blank" rel="noopener">Google's Privacy Policy</a>.</p>
+            <p><strong>Server Logs (Fly.io):</strong> Our website is hosted on Fly.io. As part of normal server operations, Fly.io automatically collects basic technical data for troubleshooting and security purposes, including:</p>
+            <ul>
+                <li>IP addresses</li>
+                <li>Request timestamps and HTTP methods</li>
+                <li>URLs requested and HTTP status codes</li>
+                <li>Browser user-agent strings</li>
+                <li>Referrer headers</li>
+            </ul>
+            <p>This server log data is retained for a limited period and is used solely for diagnosing technical issues, monitoring site performance, and protecting against malicious activity.</p>
+            <p><strong>No User Accounts:</strong> We do not require you to create an account, nor do we directly collect your name, email address, or physical address through general use of the site.</p>
+
+            <h2>2. Public Blockchain Data</h2>
+            <p>If you choose to interact with the digital asset addresses displayed on our site (for the purpose of making a cryptographic micro-donation), you are interacting directly with decentralized, public blockchain networks (e.g., Ethereum, Arbitrum, Base, Keeta Network).</p>
+            <p>By the inherent design of blockchain technology, transaction details are permanent and public. <strong>Your public wallet address, the timestamp of the transaction, and the asset amount will be permanently visible to anyone on public block explorers.</strong> We do not control these networks, and we cannot alter, hide, or delete this on-chain data.</p>
+
+            <h2>3. Third-Party KYC &amp; Compliance Providers</h2>
+            <p>To comply with international financial regulations—including the EU Markets in Crypto-Assets (MiCA) regulation and Anti-Money Laundering (AML) directives—the fiat off-ramping infrastructure we connect to is managed by regulated third parties (such as the Keeta Anchor network, Footprint, and Bridge by Stripe).</p>
+            <ul>
+                <li><strong>Micro-Donations:</strong> Depending on the Anchor operator's configuration, small donations may be processed using Simplified Due Diligence, requiring no active identity verification beyond the public wallet address.</li>
+                <li><strong>Identity Verification:</strong> For larger transactions, the Anchor operator may require you to complete a Know Your Customer (KYC) flow. If prompted, you will submit your identity documents and personal data directly to the regulated provider (e.g., Footprint).</li>
+            </ul>
+            <p><strong>Pretiola never intercepts, processes, views, or stores your KYC data, government ID, or biometrics.</strong> The handling of that data is governed strictly by the privacy policies of those respective third-party providers.</p>
+
+            <h2>4. Advertising, Remarketing &amp; Audience Targeting</h2>
+            <p>We may use Google Analytics features for advertising purposes, including but not limited to:</p>
+            <ul>
+                <li><strong>Remarketing:</strong> We may use data collected through Google Analytics to show you targeted advertisements on third-party websites and platforms within the Google Display Network and other advertising networks. This means you may see ads related to Pretiola after visiting our site.</li>
+                <li><strong>Audience Targeting:</strong> We may create audience segments based on your browsing behavior, demographics, and interests to deliver more relevant advertising content.</li>
+                <li><strong>Similar Audiences:</strong> Google may use your data to find and target users with similar characteristics to our existing visitors.</li>
+            </ul>
+            <p><strong>Opting Out:</strong> You can opt out of Google Analytics tracking by installing the <a href="https://tools.google.com/dlpage/gaoptout" class="text-brand-oxblood hover:text-brand-gold transition duration-200 font-bold" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a>. You can also manage your Google ad personalization preferences at <a href="https://adssettings.google.com" class="text-brand-oxblood hover:text-brand-gold transition duration-200 font-bold" target="_blank" rel="noopener">Google Ads Settings</a>. Additionally, you may adjust your browser settings to block or delete cookies at any time.</p>
+
+            <h2>5. Cookies</h2>
+            <p>We use the following types of cookies:</p>
+            <ul>
+                <li><strong>Analytics Cookies:</strong> Set by Google Analytics to measure site usage and performance (e.g., <code>_ga</code>, <code>_gid</code>).</li>
+                <li><strong>Advertising Cookies:</strong> Set by Google to build visitor profiles and deliver targeted ads across the web (e.g., <code>_gcl_au</code>, <code>IDE</code>, <code>NID</code>).</li>
+            </ul>
+            <p>You can control or disable cookies through your browser settings. Note that disabling cookies may affect your browsing experience.</p>
+
+            <h2>6. Your Rights Under Data Protection Laws</h2>
+            <p>If you reside in jurisdictions with comprehensive data protection laws (such as the GDPR in the EEA or CCPA in California), you possess certain rights regarding your personal data, including the right to access, correct, or request deletion of data we hold. You may also have the right to object to or restrict processing, and to opt out of the sale or sharing of personal information for targeted advertising.</p>
+            <p>For analytics data collected via Google Analytics, you may exercise your rights by using the opt-out mechanisms described above or by contacting us directly. For KYC information processed by third-party providers, privacy requests must be directed to the respective provider. Please be advised that the right to erasure does not apply to immutable data permanently recorded on a public blockchain.</p>
+
+            <h2>7. Data Sharing &amp; Third-Party Services</h2>
+            <p>We share data with the following categories of third parties:</p>
+            <ul>
+                <li><strong>Google LLC:</strong> Analytics and advertising data as described above, processed under Google's data processing terms.</li>
+                <li><strong>Fly.io:</strong> Server log data necessary for hosting and infrastructure operations.</li>
+                <li><strong>KYC/Compliance Providers:</strong> Identity verification data as described in Section 3, submitted directly by you to those providers.</li>
+            </ul>
+            <p>We do not sell your personal data to unaffiliated third parties. Data may be shared with law enforcement or regulatory bodies if required by applicable law.</p>
+
+            <h2>8. Data Retention</h2>
+            <p>Google Analytics data is retained according to our configured retention settings (typically 14 or 26 months). Server logs on Fly.io are retained for a limited period necessary for troubleshooting and security purposes. On-chain blockchain data is permanent and immutable by design.</p>
+
+            <h2>9. Changes to This Policy</h2>
+            <p>We may update this Privacy Policy from time to time to reflect changes in Web3 regulatory frameworks or our operational structure. We will indicate modifications by updating the "Last Updated" date at the top of this document. Continued use of the website following any updates constitutes your acceptance of the revised policy.</p>
+
+            <h2>10. Contact Us</h2>
+            <p>If you have any questions or concerns regarding this Privacy Policy or our decentralized architecture, please contact our advisory team at: <a href="mailto:contact@pretiola.org" class="text-brand-oxblood hover:text-brand-gold transition duration-200 font-bold">contact@pretiola.org</a>.</p>
+        </div>
+    </main>
+
     {% include "footer.html" %}
-  </footer>
+
 </body>
 </html>

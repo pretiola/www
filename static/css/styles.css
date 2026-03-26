@@ -1,13 +1,152 @@
 @import "tailwindcss";
 @source "../../templates";
 
-/* Base semantic resets */
+@theme {
+  --color-brand-parchment: #F5ECD7;
+  --color-brand-cream: #FBF7ED;
+  --color-brand-brown: #3E2723;
+  --color-brand-oxblood: #6B1D1D;
+  --color-brand-gold: #B8860B;
+  --color-brand-goldLight: #DAA520;
+  --color-brand-ink: #2C1810;
+  --color-brand-vellum: #EDE0C8;
+  --color-brand-rust: #8B4513;
+  --color-brand-keeta: #FF886D;
+
+  --font-sans: 'Cormorant Garamond', serif;
+  --font-serif: 'Cinzel', serif;
+  --font-display: 'Cinzel Decorative', serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Base */
 @layer base {
   body {
-    background-color: #f9fafb;
-    color: #000000;
-    @apply font-serif antialiased;
+    background-color: #F5ECD7;
+    color: #2C1810;
+    @apply font-sans antialiased;
   }
+}
+
+/* Animations */
+@keyframes fillBar {
+  from { width: 0; }
+  to { width: 75%; }
+}
+.animate-fill {
+  animation: fillBar 1.5s ease-out forwards;
+}
+
+/* Illuminated drop cap */
+.drop-cap::first-letter {
+  font-family: 'Cinzel Decorative', serif;
+  float: left;
+  font-size: 3.5rem;
+  line-height: 0.8;
+  padding-right: 0.15em;
+  padding-top: 0.08em;
+  color: #6B1D1D;
+  font-weight: 700;
+}
+
+/* Manuscript border ornament */
+.manuscript-border {
+  border: 2px solid #B8860B;
+  box-shadow: inset 0 0 0 4px #F5ECD7, inset 0 0 0 5px #DAA520;
+}
+
+/* Decorative rule */
+.ornamental-rule {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #B8860B;
+}
+.ornamental-rule::before,
+.ornamental-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #B8860B, transparent);
+}
+
+/* Aged paper texture */
+.parchment-texture {
+  background-color: #F5ECD7;
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c4a97d' fill-opacity='0.08'%3E%3Cpath d='M5 0h1L0 5V4zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Cross ornament for section dividers */
+.cross-ornament::before {
+  content: '\271E';
+  font-size: 1.5rem;
+  color: #B8860B;
+}
+
+/* Scroll-like container */
+.scroll-container {
+  background: linear-gradient(to bottom, #EDE0C8, #F5ECD7 5%, #F5ECD7 95%, #EDE0C8);
+  border-left: 3px double #B8860B;
+  border-right: 3px double #B8860B;
+}
+
+/* Nav link hover with underline flourish */
+.nav-link {
+  position: relative;
+  text-align: center;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #B8860B;
+  transition: all 0.3s;
+  transform: translateX(-50%);
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Subtle vignette on hero */
+.vignette {
+  box-shadow: inset 0 0 150px rgba(44, 24, 16, 0.4);
+}
+
+/* Legal page styles */
+.legal-content h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  color: #3E2723;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(184, 134, 11, 0.3);
+  padding-bottom: 0.5rem;
+}
+.legal-content p {
+  margin-bottom: 1.25rem;
+  font-size: 1.25rem;
+  color: rgba(44, 24, 16, 0.85);
+  line-height: 1.75;
+}
+.legal-content ul {
+  list-style-type: square;
+  margin-left: 1.5rem;
+  margin-bottom: 1.25rem;
+  color: rgba(44, 24, 16, 0.85);
+  font-size: 1.25rem;
+}
+.legal-content li {
+  margin-bottom: 0.5rem;
+}
+.legal-content strong {
+  color: #3E2723;
+  font-weight: 600;
 }
 
 /* Gallery carousel */

@@ -3,6 +3,7 @@ use std::net::TcpListener;
 
 #[tokio::main]
 async fn main() -> std::io::Result<()> {
+    let _ = dotenvy::dotenv();
     env_logger::Builder::from_env(env_logger::Env::default().default_filter_or("info")).init();
     let port = std::env::var("PORT").unwrap_or_else(|_| "8080".to_string());
     let addr = format!("0.0.0.0:{}", port);

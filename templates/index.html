@@ -8,6 +8,7 @@
     <meta property="og:title" content="Pretiola | Strategic & Technological Advisory for Charitable Missions">
     <meta property="og:description" content="Pretiola provides full advisory services bridging canonical fidelity with next-generation decentralized finance.">
     <meta property="og:type" content="website">
+    <meta name="web3forms-access-key" content="{{ web3forms_access_key }}">
     <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
@@ -38,17 +39,18 @@
             <div class="ornamental-rule text-lg mb-8">
                 <span class="font-serif tracking-[0.3em] uppercase text-brand-goldLight text-lg">Christian Tradition &middot; Modern Execution</span>
             </div>
-            <h1 class="font-display text-4xl md:text-6xl lg:text-7xl mb-6 leading-tight text-brand-cream">
-                Driving Real Change
+            <h1 class="font-display text-4xl md:text-5xl lg:text-6xl mb-8 leading-tight text-brand-cream">
+                Catholic charity, on rails that actually move money.
             </h1>
-            <p class="font-serif text-2xl md:text-3xl italic text-brand-goldLight mb-8 tracking-wide">Through Technology.</p>
-            <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-brand-vellum/80 mb-12 leading-relaxed font-light">
-                A full advisory service for technology, strategy, and communications empowering Catholic associations, ministries, and charities to deploy capital globally with radical Web3 transparency while staying strictly aligned with Holy See guidelines.
+            <p class="mt-4 max-w-3xl mx-auto text-lg md:text-xl text-brand-vellum/85 mb-12 leading-relaxed font-light">
+                Pretiola helps Catholic ministries receive global donations in minutes instead of weeks &mdash; using compliant Web3 settlement, in strict alignment with Holy See guidelines.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-5">
-                <a href="#advisory" class="font-serif text-lg uppercase tracking-[0.2em] bg-brand-gold text-white px-10 py-4 hover:bg-brand-goldLight transition border border-brand-goldLight/30">Explore Services</a>
-                <a href="#technology" class="font-serif text-lg uppercase tracking-[0.2em] border-2 border-brand-cream/30 text-brand-cream px-10 py-4 hover:border-brand-goldLight hover:text-brand-goldLight transition flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-code"></i> Keeta Integration
+            <div class="flex flex-col sm:flex-row justify-center gap-4 max-w-3xl mx-auto">
+                <a href="#ministry-intake" class="font-serif text-base lg:text-lg uppercase tracking-[0.18em] bg-brand-gold text-white px-6 py-4 hover:bg-brand-goldLight transition border border-brand-goldLight/30 flex items-center justify-center gap-3 flex-1 text-center leading-tight">
+                    <i class="fa-solid fa-church shrink-0"></i> <span>For Ministries &mdash; Start Intake</span>
+                </a>
+                <a href="#keeta-brief" class="font-serif text-base lg:text-lg uppercase tracking-[0.18em] border-2 border-brand-cream/30 text-brand-cream px-6 py-4 hover:border-brand-goldLight hover:text-brand-goldLight transition flex items-center justify-center gap-3 flex-1 text-center leading-tight">
+                    <i class="fa-solid fa-code shrink-0"></i> <span>For the Keeta Team &mdash; Read the Grant Brief</span>
                 </a>
             </div>
         </div>
@@ -239,8 +241,195 @@
         </div>
     </section>
 
+    <!-- Ministry Intake -->
+    <section id="ministry-intake" class="py-24 bg-brand-cream border-y border-brand-gold/20 scroll-mt-24">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <p class="font-serif text-lg uppercase tracking-[0.3em] text-brand-gold mb-4">For Ministries</p>
+                <h3 class="font-serif text-3xl md:text-4xl text-brand-brown mb-4">Start the Intake</h3>
+                <div class="w-24 h-[2px] bg-brand-gold mx-auto mb-6"></div>
+                <p class="text-brand-ink/70 text-lg leading-relaxed max-w-2xl mx-auto">
+                    Tell us about your ministry. We respond within 3 business days from <span class="font-mono text-brand-oxblood">contact@pretiola.org</span>.
+                </p>
+            </div>
+
+            <div id="intake-shell" class="bg-brand-parchment border border-brand-gold/30 p-8 md:p-12 shadow-sm">
+                <form id="intake-form" class="space-y-8" novalidate aria-describedby="intake-form-error">
+                    <!-- Honeypot: hidden from humans, bots fill it. Not display:none, since some bots skip those. -->
+                    <div aria-hidden="true" style="position:absolute; left:-10000px; width:1px; height:1px; overflow:hidden;">
+                        <label for="intake-website">Website (leave blank)</label>
+                        <input type="text" id="intake-website" name="website" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <div>
+                        <label for="intake-ministry-name" class="block font-serif uppercase tracking-[0.15em] text-brand-brown text-sm mb-2">Ministry / Association Name <span class="text-brand-oxblood">*</span></label>
+                        <input type="text" id="intake-ministry-name" name="ministry_name" required maxlength="200"
+                               aria-required="true" aria-describedby="err-ministry-name"
+                               class="w-full bg-white border border-brand-gold/40 px-4 py-3 text-lg text-brand-ink focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition">
+                        <p id="err-ministry-name" class="hidden mt-2 text-sm text-brand-oxblood font-serif"></p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="intake-contact-name" class="block font-serif uppercase tracking-[0.15em] text-brand-brown text-sm mb-2">Primary Contact Name <span class="text-brand-oxblood">*</span></label>
+                            <input type="text" id="intake-contact-name" name="contact_name" required maxlength="120"
+                                   aria-required="true" aria-describedby="err-contact-name"
+                                   class="w-full bg-white border border-brand-gold/40 px-4 py-3 text-lg text-brand-ink focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition">
+                            <p id="err-contact-name" class="hidden mt-2 text-sm text-brand-oxblood font-serif"></p>
+                        </div>
+                        <div>
+                            <label for="intake-role" class="block font-serif uppercase tracking-[0.15em] text-brand-brown text-sm mb-2">Role / Title <span class="text-brand-oxblood">*</span></label>
+                            <input type="text" id="intake-role" name="role" required maxlength="120"
+                                   aria-required="true" aria-describedby="err-role"
+                                   class="w-full bg-white border border-brand-gold/40 px-4 py-3 text-lg text-brand-ink focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition">
+                            <p id="err-role" class="hidden mt-2 text-sm text-brand-oxblood font-serif"></p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="intake-email" class="block font-serif uppercase tracking-[0.15em] text-brand-brown text-sm mb-2">Email <span class="text-brand-oxblood">*</span></label>
+                            <input type="email" id="intake-email" name="email" required maxlength="254"
+                                   aria-required="true" aria-describedby="err-email"
+                                   class="w-full bg-white border border-brand-gold/40 px-4 py-3 text-lg text-brand-ink focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition">
+                            <p id="err-email" class="hidden mt-2 text-sm text-brand-oxblood font-serif"></p>
+                        </div>
+                        <div>
+                            <label for="intake-country" class="block font-serif uppercase tracking-[0.15em] text-brand-brown text-sm mb-2">Country of Operation <span class="text-brand-oxblood">*</span></label>
+                            <input type="text" id="intake-country" name="country" required maxlength="120"
+                                   aria-required="true" aria-describedby="err-country"
+                                   class="w-full bg-white border border-brand-gold/40 px-4 py-3 text-lg text-brand-ink focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition">
+                            <p id="err-country" class="hidden mt-2 text-sm text-brand-oxblood font-serif"></p>
+                        </div>
+                    </div>
+
+                    <fieldset aria-describedby="err-canonical-status">
+                        <legend class="block font-serif uppercase tracking-[0.15em] text-brand-brown text-sm mb-3">Canonical Status <span class="text-brand-oxblood">*</span></legend>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <label class="flex items-start gap-3 p-3 border border-brand-gold/30 bg-white hover:border-brand-gold cursor-pointer transition">
+                                <input type="radio" name="canonical_status" value="De facto private association" required class="mt-1 accent-brand-gold">
+                                <span class="text-brand-ink/85 leading-snug"><em>De facto</em> private association</span>
+                            </label>
+                            <label class="flex items-start gap-3 p-3 border border-brand-gold/30 bg-white hover:border-brand-gold cursor-pointer transition">
+                                <input type="radio" name="canonical_status" value="Public juridic person" class="mt-1 accent-brand-gold">
+                                <span class="text-brand-ink/85 leading-snug">Public juridic person</span>
+                            </label>
+                            <label class="flex items-start gap-3 p-3 border border-brand-gold/30 bg-white hover:border-brand-gold cursor-pointer transition">
+                                <input type="radio" name="canonical_status" value="Diocesan" class="mt-1 accent-brand-gold">
+                                <span class="text-brand-ink/85 leading-snug">Diocesan</span>
+                            </label>
+                            <label class="flex items-start gap-3 p-3 border border-brand-gold/30 bg-white hover:border-brand-gold cursor-pointer transition">
+                                <input type="radio" name="canonical_status" value="Religious institute" class="mt-1 accent-brand-gold">
+                                <span class="text-brand-ink/85 leading-snug">Religious institute</span>
+                            </label>
+                            <label class="flex items-start gap-3 p-3 border border-brand-gold/30 bg-white hover:border-brand-gold cursor-pointer transition md:col-span-2">
+                                <input type="radio" name="canonical_status" value="Other" class="mt-1 accent-brand-gold">
+                                <span class="text-brand-ink/85 leading-snug">Other</span>
+                            </label>
+                        </div>
+                        <p id="err-canonical-status" class="hidden mt-2 text-sm text-brand-oxblood font-serif"></p>
+                    </fieldset>
+
+                    <div>
+                        <label for="intake-donations-bucket" class="block font-serif uppercase tracking-[0.15em] text-brand-brown text-sm mb-2">Estimated Annual Donations Received (EUR) <span class="text-brand-oxblood">*</span></label>
+                        <select id="intake-donations-bucket" name="donations_bucket" required
+                                aria-required="true" aria-describedby="err-donations-bucket"
+                                class="w-full bg-white border border-brand-gold/40 px-4 py-3 text-lg text-brand-ink focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition">
+                            <option value="">Select a range&hellip;</option>
+                            <option value="<10k">Less than &euro;10,000</option>
+                            <option value="10-100k">&euro;10,000 &ndash; &euro;100,000</option>
+                            <option value="100k-1M">&euro;100,000 &ndash; &euro;1,000,000</option>
+                            <option value=">1M">More than &euro;1,000,000</option>
+                        </select>
+                        <p id="err-donations-bucket" class="hidden mt-2 text-sm text-brand-oxblood font-serif"></p>
+                    </div>
+
+                    <fieldset aria-describedby="err-payment-rails">
+                        <legend class="block font-serif uppercase tracking-[0.15em] text-brand-brown text-sm mb-3">Current Payment Rails <span class="text-brand-oxblood">*</span></legend>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                            <label class="flex items-center gap-2 p-3 border border-brand-gold/30 bg-white hover:border-brand-gold cursor-pointer transition">
+                                <input type="checkbox" name="payment_rails" value="Bank transfer" class="accent-brand-gold">
+                                <span class="text-brand-ink/85">Bank transfer</span>
+                            </label>
+                            <label class="flex items-center gap-2 p-3 border border-brand-gold/30 bg-white hover:border-brand-gold cursor-pointer transition">
+                                <input type="checkbox" name="payment_rails" value="PayPal" class="accent-brand-gold">
+                                <span class="text-brand-ink/85">PayPal</span>
+                            </label>
+                            <label class="flex items-center gap-2 p-3 border border-brand-gold/30 bg-white hover:border-brand-gold cursor-pointer transition">
+                                <input type="checkbox" name="payment_rails" value="Stripe" class="accent-brand-gold">
+                                <span class="text-brand-ink/85">Stripe</span>
+                            </label>
+                            <label class="flex items-center gap-2 p-3 border border-brand-gold/30 bg-white hover:border-brand-gold cursor-pointer transition">
+                                <input type="checkbox" name="payment_rails" value="Crypto" class="accent-brand-gold">
+                                <span class="text-brand-ink/85">Crypto</span>
+                            </label>
+                            <label class="flex items-center gap-2 p-3 border border-brand-gold/30 bg-white hover:border-brand-gold cursor-pointer transition">
+                                <input type="checkbox" name="payment_rails" value="Cash" class="accent-brand-gold">
+                                <span class="text-brand-ink/85">Cash</span>
+                            </label>
+                            <label class="flex items-center gap-2 p-3 border border-brand-gold/30 bg-white hover:border-brand-gold cursor-pointer transition">
+                                <input type="checkbox" name="payment_rails" value="Other" class="accent-brand-gold">
+                                <span class="text-brand-ink/85">Other</span>
+                            </label>
+                        </div>
+                        <p id="err-payment-rails" class="hidden mt-2 text-sm text-brand-oxblood font-serif"></p>
+                    </fieldset>
+
+                    <div>
+                        <label for="intake-problem" class="block font-serif uppercase tracking-[0.15em] text-brand-brown text-sm mb-2">What problem are you trying to solve? <span class="text-brand-oxblood">*</span></label>
+                        <textarea id="intake-problem" name="problem" required maxlength="500" rows="5"
+                                  aria-required="true" aria-describedby="err-problem intake-problem-count"
+                                  class="w-full bg-white border border-brand-gold/40 px-4 py-3 text-lg text-brand-ink focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition resize-y"></textarea>
+                        <div class="flex justify-between mt-2">
+                            <p id="err-problem" class="hidden text-sm text-brand-oxblood font-serif"></p>
+                            <p id="intake-problem-count" class="text-sm text-brand-ink/50 font-mono ml-auto" aria-live="polite">0 / 500</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="intake-referral" class="block font-serif uppercase tracking-[0.15em] text-brand-brown text-sm mb-2">How did you hear about Pretiola? <span class="text-brand-ink/40 normal-case tracking-normal text-xs">(optional)</span></label>
+                        <input type="text" id="intake-referral" name="referral" maxlength="200"
+                               class="w-full bg-white border border-brand-gold/40 px-4 py-3 text-lg text-brand-ink focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition">
+                    </div>
+
+                    <div>
+                        <label class="flex items-start gap-3 cursor-pointer">
+                            <input type="checkbox" id="intake-consent" name="consent" required aria-required="true" aria-describedby="err-consent" class="mt-1.5 accent-brand-gold">
+                            <span class="text-brand-ink/80 leading-relaxed">
+                                I confirm I am authorized to represent this ministry and consent to Pretiola contacting me about this inquiry. <span class="text-brand-oxblood">*</span>
+                            </span>
+                        </label>
+                        <p id="err-consent" class="hidden mt-2 text-sm text-brand-oxblood font-serif"></p>
+                    </div>
+
+                    <p id="intake-form-error" class="hidden p-4 border border-brand-oxblood/40 bg-brand-oxblood/5 text-brand-oxblood font-serif text-base" role="alert"></p>
+
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-4 border-t border-brand-gold/20">
+                        <p class="text-sm text-brand-ink/60">Required fields are marked <span class="text-brand-oxblood">*</span></p>
+                        <button type="submit" id="intake-submit" disabled
+                                class="font-serif text-lg uppercase tracking-[0.2em] bg-brand-gold text-white px-10 py-4 hover:bg-brand-goldLight transition border border-brand-goldLight/30 disabled:bg-brand-ink/20 disabled:border-brand-ink/10 disabled:cursor-not-allowed">
+                            <span id="intake-submit-label">Submit Intake</span>
+                            <span id="intake-submit-spinner" class="hidden ml-2"><i class="fa-solid fa-circle-notch fa-spin"></i></span>
+                        </button>
+                    </div>
+                </form>
+
+                <div id="intake-success" class="hidden text-center py-8" role="status" aria-live="polite">
+                    <div class="w-16 h-16 mx-auto mb-6 border-2 border-brand-gold flex items-center justify-center">
+                        <i class="fa-solid fa-check text-3xl text-brand-gold"></i>
+                    </div>
+                    <h4 class="font-serif text-2xl text-brand-brown mb-4">Thank you.</h4>
+                    <p class="text-brand-ink/75 text-lg leading-relaxed max-w-xl mx-auto">
+                        We&rsquo;ve received your intake and will respond within 3 business days from <span class="font-mono text-brand-oxblood">contact@pretiola.org</span>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Keeta Technology Section -->
     <section id="technology" class="py-24 bg-[#1a1207] text-brand-cream relative overflow-hidden border-t-2 border-brand-keeta/60">
+        <span id="keeta-brief" class="block absolute -top-24"></span>
         <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-keeta/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
 
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -359,6 +548,10 @@
 
             <!-- Crowd Funding Progress -->
             <div class="mt-16">
+                <div class="inline-flex items-center gap-2 px-3 py-1 mb-4 border border-brand-keeta/40 bg-brand-keeta/10 text-brand-keeta uppercase tracking-[0.2em] text-xs font-bold">
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand-keeta animate-pulse"></span>
+                    Launch round &mdash; open now.
+                </div>
                 <h5 class="font-serif uppercase tracking-wider text-brand-keeta text-lg mb-6">Crowd Funding Progress</h5>
                 <div class="bg-white/5 border border-white/10 p-8 rounded-lg mb-12 shadow-2xl relative group overflow-hidden">
                     <!-- Subtle background glow -->
@@ -539,6 +732,7 @@
         }
     </style>
 
+    <script src="/static/js/intake.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {

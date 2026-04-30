@@ -8,3 +8,5 @@ static/favicon-*.png
 static/apple-touch-icon.png
 static/android-chrome-*.png
 static/favicon.ico
+.env
+intake-log.jsonl

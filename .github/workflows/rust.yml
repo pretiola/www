@@ -28,6 +28,15 @@ jobs:
       - uses: actions/checkout@v4
       - name: Setup Flyctl
         uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Sync runtime secrets to Fly
+        run: |
+          flyctl secrets set --stage \
+            WEB3FORMS_ACCESS_KEY="$WEB3FORMS_ACCESS_KEY" \
+            INTAKE_EMAIL="$INTAKE_EMAIL"
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+          WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
+          INTAKE_EMAIL: ${{ vars.INTAKE_EMAIL || 'contact@pretiola.org' }}
       - name: Deploy
         run: flyctl deploy --remote-only
         env:

@@ -5,17 +5,17 @@
                 <a href="/" class="font-display text-2xl text-brand-oxblood tracking-wider">Pretiola <span class="not-italic">&#x1F968;</span></a>
             </div>
             {% if page_name == "index" %}
-            <div class="hidden lg:flex space-x-10 justify-center flex-1">
+            <div class="hidden xl:flex space-x-10 justify-center flex-1">
                 <a href="#about" class="nav-link text-lg font-serif font-medium text-brand-brown/70 hover:text-brand-oxblood uppercase tracking-[0.2em] transition">Identity</a>
                 <a href="#advisory" class="nav-link text-lg font-serif font-medium text-brand-brown/70 hover:text-brand-oxblood uppercase tracking-[0.2em] transition">Advisory</a>
                 <a href="#poc" class="nav-link text-lg font-serif font-medium text-brand-brown/70 hover:text-brand-oxblood uppercase tracking-[0.2em] transition">Uganda PoC</a>
                 <a href="#technology" class="nav-link text-lg font-serif font-medium text-brand-keeta hover:text-orange-800 uppercase tracking-[0.2em] transition">Keeta Brief</a>
             </div>
-            <div class="hidden lg:flex w-56 justify-end">
+            <div class="hidden xl:flex w-56 justify-end">
                 <a href="#contact" class="font-serif text-lg uppercase tracking-widest border-2 border-brand-gold text-brand-brown px-5 py-2.5 hover:bg-brand-gold hover:text-white transition duration-300 whitespace-nowrap text-center">Partner With Us</a>
             </div>
             <!-- Mobile hamburger -->
-            <button id="menu-toggle" class="lg:hidden text-brand-brown p-2" aria-label="Open menu">
+            <button id="menu-toggle" class="xl:hidden text-brand-brown p-2" aria-label="Open menu">
                 <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
                 </svg>
@@ -32,13 +32,13 @@
     </div>
     {% if page_name == "index" %}
     <!-- Mobile menu -->
-    <div id="mobile-menu" class="hidden lg:hidden bg-brand-cream border-t border-brand-gold/30">
+    <div id="mobile-menu" class="hidden xl:hidden bg-brand-cream border-t border-brand-gold/30">
         <div class="px-6 py-6 space-y-4">
             <a href="#about" class="mobile-nav-link block text-lg font-serif font-medium text-brand-brown/70 hover:text-brand-oxblood uppercase tracking-[0.2em] transition">Identity</a>
             <a href="#advisory" class="mobile-nav-link block text-lg font-serif font-medium text-brand-brown/70 hover:text-brand-oxblood uppercase tracking-[0.2em] transition">Advisory</a>
             <a href="#poc" class="mobile-nav-link block text-lg font-serif font-medium text-brand-brown/70 hover:text-brand-oxblood uppercase tracking-[0.2em] transition">Uganda PoC</a>
             <a href="#technology" class="mobile-nav-link block text-lg font-serif font-medium text-brand-keeta hover:text-orange-800 uppercase tracking-[0.2em] transition">Keeta Brief</a>
-            <a href="#contact" class="block font-serif text-lg uppercase tracking-widest border-2 border-brand-gold text-brand-brown px-6 py-2.5 hover:bg-brand-gold hover:text-white transition duration-300 text-center mt-4">Partner With Us</a>
+            <a href="#contact" class="mobile-nav-link block font-serif text-lg uppercase tracking-widest border-2 border-brand-gold text-brand-brown px-6 py-2.5 hover:bg-brand-gold hover:text-white transition duration-300 text-center mt-4">Partner With Us</a>
         </div>
     </div>
     {% endif %}

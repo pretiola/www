@@ -15,6 +15,10 @@ fn render_page(page: &str, tera: web::Data<Tera>) -> HttpResponse {
     let mut context = tera::Context::new();
     context.insert("page_name", page);
     context.insert("current_year", &Utc::now().year());
+    context.insert(
+        "web3forms_access_key",
+        &std::env::var("WEB3FORMS_ACCESS_KEY").unwrap_or_default(),
+    );
 
     match tera.render(&template_name, &context) {
         Ok(html) => HttpResponse::Ok().content_type("text/html").body(html),

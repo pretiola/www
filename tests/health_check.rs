@@ -24,8 +24,10 @@ async fn health_check_works() {
     assert!(response.status().is_success());
     let body = response.text().await.expect("Failed to get body");
     assert!(body.contains("Pretiola"));
-    assert!(body.contains("Driving Real Change"));
+    assert!(body.contains("Catholic charity"));
     assert!(body.contains("Advisory"));
+    assert!(body.contains("ministry-intake"));
+    assert!(body.contains("keeta-brief"));
 }
 
 #[actix_web::test]
@@ -100,6 +102,24 @@ async fn sitemap_returns_valid_xml() {
     // Should NOT include partials
     assert!(!body.contains("navbar.html"));
     assert!(!body.contains("footer.html"));
+}
+
+#[actix_web::test]
+async fn intake_form_renders_with_access_key() {
+    std::env::set_var("WEB3FORMS_ACCESS_KEY", "test-key-abc-123");
+    let address = spawn_app();
+    let client = reqwest::Client::new();
+
+    let response = client
+        .get(&format!("{}/", &address))
+        .send()
+        .await
+        .expect("request failed");
+
+    assert!(response.status().is_success());
+    let body = response.text().await.expect("body");
+    assert!(body.contains("test-key-abc-123"), "access key should be injected into the page");
+    assert!(body.contains("ministry-intake"));
 }
 
 #[actix_web::test]

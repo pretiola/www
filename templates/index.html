@@ -634,24 +634,45 @@
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div>
-                                <span class="text-brand-keeta text-lg uppercase tracking-wider font-semibold block mb-2">Functional Requirements</span>
+                                <span class="text-brand-keeta text-lg uppercase tracking-wider font-semibold block mb-2">Functional</span>
                                 <p class="text-brand-cream text-lg leading-relaxed">Directs donors to visit and use the standalone Keeta wallet application to process the end-to-end donation flow manually. Users are required to manually input the recipient organization's IBAN details to execute the fiat off-ramp.</p>
                             </div>
                             <div>
-                                <span class="text-brand-keeta text-lg uppercase tracking-wider font-semibold block mb-2">Regulatory Requirements</span>
+                                <span class="text-brand-keeta text-lg uppercase tracking-wider font-semibold block mb-2">Regulatory</span>
                                 <p class="text-brand-cream text-lg leading-relaxed">Strict baseline compliance. Full Footprint KYC verification is required for all donors during wallet onboarding, regardless of the donation amount. While fully compliant, this disproportionate friction severely limits casual impulse micro-donations.</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="bg-white/5 border border-white/10 p-6 rounded-lg">
-                        <div class="flex items-center mb-4">
+                        <div class="flex items-center mb-8">
                             <h6 class="text-white font-serif text-lg">Phase 2: Automated Routing &amp; Tiered Compliance</h6>
-                            <span class="ml-3 bg-white/10 text-white/70 text-lg uppercase tracking-wider px-2 py-1 rounded">Months 1-6</span>
+                            <span class="ml-3 bg-brand-keeta text-white text-lg uppercase tracking-wider px-2 py-1 rounded animate-pulse">IN PROGRESS</span>
                         </div>
+
+                        <!-- Phase 2 Banner: Pasture -->
+                        <div class="mb-10 bg-emerald-900/10 border-2 border-emerald-800/20 rounded-lg p-6 flex flex-col md:flex-row items-center justify-between gap-6 group hover:border-emerald-600/30 transition-all duration-500 overflow-hidden relative">
+                            <div class="absolute -right-8 -bottom-8 text-emerald-900/10 text-9xl transform -rotate-12 group-hover:rotate-0 transition-transform duration-700 pointer-events-none">
+                                <i class="fa-solid fa-sheep"></i>
+                            </div>
+                            <div class="flex items-center gap-5 relative z-10">
+                                <div class="w-16 h-16 rounded-full bg-emerald-800/20 flex items-center justify-center text-emerald-400 border border-emerald-500/20">
+                                    <i class="fa-solid fa-seedling text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h6 class="text-white font-serif text-xl tracking-wide">Join our new GitHub project: <span class="text-emerald-400">Pasture</span></h6>
+                                    <p class="text-brand-cream/70 font-sans italic text-lg mt-1">"Feed my sheep" &mdash; building the automated routing engine for global charity.</p>
+                                </div>
+                            </div>
+                            <a href="https://github.com/pretiola/pasture" target="_blank" class="relative z-10 px-8 py-3 bg-emerald-700 hover:bg-emerald-600 text-white font-serif uppercase tracking-[0.2em] text-sm transition-all shadow-lg hover:shadow-emerald-900/40 flex items-center gap-3">
+                                <span>Contribute</span>
+                                <i class="fa-brands fa-github text-lg"></i>
+                            </a>
+                        </div>
+
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div>
-                                <span class="text-brand-keeta text-lg uppercase tracking-wider font-semibold block mb-2">Functional Requirements</span>
+                                <span class="text-brand-keeta text-lg uppercase tracking-wider font-semibold block mb-2">Functional</span>
                                 <ul class="text-brand-cream text-lg leading-relaxed list-disc pl-4 space-y-2">
                                     <li><strong>Frictionless "Send and Done":</strong> The recipient charities utilize persistent forwarding addresses. Donors simply send stablecoins (e.g., EURC) from their existing unhosted wallets directly to these deposit addresses across supported chains.</li>
                                     <li><strong>Automated Off-Ramp:</strong> Funds are automatically detected, converted via the Keeta Anchor, and pushed directly to the recipient's bank account without any manual user entry.</li>
@@ -659,7 +680,7 @@
                                 </ul>
                             </div>
                             <div>
-                                <span class="text-brand-keeta text-lg uppercase tracking-wider font-semibold block mb-2">Regulatory Requirements</span>
+                                <span class="text-brand-keeta text-lg uppercase tracking-wider font-semibold block mb-2">Regulatory</span>
                                 <ul class="text-brand-cream text-lg leading-relaxed list-disc pl-4 space-y-2">
                                     <li><strong>Recipient KYB:</strong> The receiving organization completes a one-time comprehensive KYB (Know Your Business) verification as a trusted entity.</li>
                                     <li><strong>Markets in Crypto-Assets Regulation (MiCA) / AMLD6 Tiered KYC:</strong> Leveraging the Keeta Anchor, compliance shifts to a risk-based model using Simplified Due Diligence (SDD):

@@ -27,7 +27,7 @@ async fn health_check_works() {
     assert!(body.contains("Catholic charity"));
     assert!(body.contains("Advisory"));
     assert!(body.contains("ministry-intake"));
-    assert!(body.contains("keeta-brief"));
+    assert!(body.contains("Uganda PoC"));
 }
 
 #[actix_web::test]

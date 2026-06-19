@@ -24,7 +24,7 @@ async fn health_check_works() {
     assert!(response.status().is_success());
     let body = response.text().await.expect("Failed to get body");
     assert!(body.contains("Pretiola"));
-    assert!(body.contains("Catholic charity"));
+    assert!(body.contains("Catholic ministries"));
     assert!(body.contains("Advisory"));
     assert!(body.contains("ministry-intake"));
     assert!(body.contains("Uganda PoC"));
@@ -35,12 +35,7 @@ async fn all_pages_return_200() {
     let address = spawn_app();
     let client = reqwest::Client::new();
 
-    let pages = [
-        "/",
-        "/index.html",
-        "/terms.html",
-        "/privacy.html",
-    ];
+    let pages = ["/", "/index.html", "/terms.html", "/privacy.html"];
 
     for page in pages {
         let response = client
@@ -118,7 +113,10 @@ async fn intake_form_renders_with_access_key() {
 
     assert!(response.status().is_success());
     let body = response.text().await.expect("body");
-    assert!(body.contains("test-key-abc-123"), "access key should be injected into the page");
+    assert!(
+        body.contains("test-key-abc-123"),
+        "access key should be injected into the page"
+    );
     assert!(body.contains("ministry-intake"));
 }
 

@@ -8,7 +8,11 @@ pub fn run(listener: TcpListener) -> Result<Server, std::io::Error> {
     let tera = Tera::new("templates/**/*").expect("Failed to parse tera templates");
     let tera = web::Data::new(tera);
 
-    if std::env::var("WEB3FORMS_ACCESS_KEY").ok().filter(|s| !s.is_empty()).is_none() {
+    if std::env::var("WEB3FORMS_ACCESS_KEY")
+        .ok()
+        .filter(|s| !s.is_empty())
+        .is_none()
+    {
         log::warn!(
             "WEB3FORMS_ACCESS_KEY is not set; the ministry intake form will fail until it is configured"
         );

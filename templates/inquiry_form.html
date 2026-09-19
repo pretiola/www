@@ -1,0 +1,51 @@
+{% import "form_fields.html" as fields %}
+{% if errors | length > 0 %}
+<div class="error-summary" role="alert" tabindex="-1">
+  <h2>Please check your inquiry</h2>
+  <ul>{% for field,error in errors %}<li>{% if field != 'form' %}<a href="#{{ field }}">{{ error }}</a>{% else %}{{ error }}{% endif %}</li>{% endfor %}</ul>
+  <p>Your text is still in the form below.</p>
+</div>
+{% endif %}
+<form method="post" action="/inquiries/{{ kind }}" class="inquiry-form">
+  <input type="hidden" name="token" value="{{ form.token }}">
+  {% if kind == 'ministry' %}{{ fields::input(name="organization",label="Ministry or organization",form=form,errors=errors,required=true,max=160,autocomplete="organization") }}{% endif %}
+  <div class="field-pair">
+    {{ fields::input(name="name",label="Your name",form=form,errors=errors,required=true,max=120,autocomplete="name") }}
+    {{ fields::input(name="email",label="Reply email",form=form,errors=errors,required=true,type="email",max=254,autocomplete="email") }}
+  </div>
+  {% if kind == 'ministry' %}
+    {{ fields::input(name="country",label="Country where you work",form=form,errors=errors,required=true,max=120,autocomplete="country-name") }}
+  {% else %}
+  <div class="field">
+    <label for="mode">How would you like to contribute? <span class="required">(required)</span></label>
+    <select id="mode" name="mode" required {% if errors.mode is defined %}aria-invalid="true" aria-describedby="error-mode"{% endif %}>
+      <option value="">Choose an area of interest</option>
+      <option value="professional" {% if form.mode == 'professional' %}selected{% endif %}>A scoped professional contribution</option>
+      <option value="mentoring" {% if form.mode == 'mentoring' %}selected{% endif %}>Mentoring or reviewing work</option>
+      <option value="learning" {% if form.mode == 'learning' %}selected{% endif %}>Learning through supervised service</option>
+    </select>
+    {% if errors.mode is defined %}<p id="error-mode" class="field-error">{{ errors.mode }}</p>{% endif %}
+  </div>
+  {% endif %}
+  <div class="field">
+    <label for="message">{% if kind == 'ministry' %}What practical problem would you like help with?{% else %}What would you like to contribute or learn?{% endif %} <span class="required">(required)</span></label>
+    <p id="message-hint" class="field-hint">{% if kind == 'ministry' %}A little context and the result you need are enough to start.{% else %}Tell us about your relevant experience and what interests you.{% endif %} Up to 2,000 characters. Please leave out confidential or sensitive information.</p>
+    <textarea id="message" name="message" rows="7" maxlength="2000" required aria-describedby="message-hint{% if errors.message is defined %} error-message{% endif %}" {% if errors.message is defined %}aria-invalid="true"{% endif %}>{{ form.message }}</textarea>
+    {% if errors.message is defined %}<p id="error-message" class="field-error">{{ errors.message }}</p>{% endif %}
+  </div>
+  {% if kind == 'contributor' %}
+  <div class="field-pair">
+    {{ fields::input(name="availability",label="Time you could realistically give",form=form,errors=errors) }}
+    {{ fields::input(name="timezone",label="Time zone",form=form,errors=errors) }}
+  </div>
+  {{ fields::input(name="interests",label="Particular interests",form=form,errors=errors) }}
+  {% endif %}
+  {{ fields::input(name="referral",label="How did you hear about Pretiola?",form=form,errors=errors) }}
+  <div class="field consent-field">
+    <label for="consent"><input type="checkbox" id="consent" name="consent" value="yes" required {% if form.consent == 'yes' %}checked{% endif %} {% if errors.consent is defined %}aria-invalid="true" aria-describedby="error-consent"{% endif %}> <span>{% if kind == 'ministry' %}I am authorized to contact Pretiola on behalf of this ministry, and {% endif %}I agree to be contacted about this inquiry. <span class="required">(required)</span></span></label>
+    {% if errors.consent is defined %}<p id="error-consent" class="field-error">{{ errors.consent }}</p>{% endif %}
+  </div>
+  <p class="form-notice">We use these details to review and reply to your inquiry. Please do not send identity documents, credentials or private information about others. <a href="/privacy.html">How we handle your information</a>.</p>
+  <button type="submit" class="button">{% if kind == 'ministry' %}Send a ministry inquiry{% else %}Send an introduction{% endif %} <span aria-hidden="true">→</span></button>
+  <p class="field-hint">An inquiry is a first conversation, not a commitment or a confirmed placement. Prefer email? <a href="mailto:contact@pretiola.org">contact@pretiola.org</a></p>
+</form>

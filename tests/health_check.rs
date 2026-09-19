@@ -1,11 +1,20 @@
 use actix_web::rt::spawn;
-use pretiola::startup::run;
+use pretiola::{forms::SiteConfig, inquiries::Store, startup::run_with_store};
 use std::net::TcpListener;
 
 fn spawn_app() -> String {
     let listener = TcpListener::bind("127.0.0.1:0").expect("Failed to bind random port");
     let port = listener.local_addr().unwrap().port();
-    let server = run(listener).expect("Failed to bind address");
+    let server = run_with_store(
+        listener,
+        actix_web::web::Data::new(Store::memory()),
+        SiteConfig {
+            origin: format!("http://127.0.0.1:{port}"),
+            production: false,
+            trust_fly_proxy: false,
+        },
+    )
+    .expect("Failed to bind address");
     let _ = spawn(server);
     format!("http://127.0.0.1:{}", port)
 }
@@ -97,27 +106,6 @@ async fn sitemap_returns_valid_xml() {
     // Should NOT include partials
     assert!(!body.contains("navbar.html"));
     assert!(!body.contains("footer.html"));
-}
-
-#[actix_web::test]
-async fn intake_form_renders_with_access_key() {
-    std::env::set_var("WEB3FORMS_ACCESS_KEY", "test-key-abc-123");
-    let address = spawn_app();
-    let client = reqwest::Client::new();
-
-    let response = client
-        .get(&format!("{}/", &address))
-        .send()
-        .await
-        .expect("request failed");
-
-    assert!(response.status().is_success());
-    let body = response.text().await.expect("body");
-    assert!(
-        body.contains("test-key-abc-123"),
-        "access key should be injected into the page"
-    );
-    assert!(body.contains("ministry-intake"));
 }
 
 #[actix_web::test]

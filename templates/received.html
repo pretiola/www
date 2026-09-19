@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="wrap page-intro narrow">
+  <p class="eyebrow">Inquiry saved</p><h1>Thank you for<br><em>getting in touch.</em></h1>
+  <p class="lede">Your inquiry has been saved for review. Where there is a possible fit, we will follow up by email. Sending this form does not commit you to an assignment or engagement.</p>
+  {% if local_preview %}<p class="availability-note">Local test only: the inquiry is stored on this computer. No email has been sent.</p>{% endif %}
+  <p class="small">Your reference: <code>{{ reference }}</code></p>
+  <a class="button" href="/">Return to Pretiola <span aria-hidden="true">→</span></a>
+</section>
+{% endblock content %}

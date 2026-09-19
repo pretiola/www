@@ -1,0 +1,7 @@
+{% macro input(name,label,form,errors,required=false,type="text",max=200,autocomplete="off") %}
+<div class="field">
+  <label for="{{ name }}">{{ label }}{% if required %} <span class="required">(required)</span>{% else %} <span class="optional">(optional)</span>{% endif %}</label>
+  <input id="{{ name }}" name="{{ name }}" type="{{ type }}" maxlength="{{ max }}" autocomplete="{{ autocomplete }}" value="{{ form[name] }}" {% if required %}required{% endif %} {% if errors[name] is defined %}aria-invalid="true" aria-describedby="error-{{ name }}"{% endif %}>
+  {% if errors[name] is defined %}<p id="error-{{ name }}" class="field-error">{{ errors[name] }}</p>{% endif %}
+</div>
+{% endmacro input %}

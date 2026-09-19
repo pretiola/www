@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% import "form_fields.html" as fields %}
+{% block content %}
+<section class="page-intro wrap">
+  <p class="eyebrow">For ministries</p>
+  <h1>Begin with the problem.<br><em>We’ll begin by listening.</em></h1>
+  <p class="lede">Tell us about your ministry and the practical problem you are trying to solve. We will review whether Pretiola has the capacity and relevant experience to help.</p>
+</section>
+<section class="wrap form-layout">
+  <aside class="form-aside">
+    <p class="eyebrow">A first conversation</p>
+    <h2>You know your mission.</h2>
+    <p>We can start with a website that needs attention, information that needs organizing, or a piece of work that needs a clearer plan.</p>
+    <p>You do not need a technology proposal, financial history or specialist terminology to get in touch.</p>
+    <h3>What happens next?</h3><p>We review the need and, where there may be a fit, reply to explore a manageable scope. Any work needs a separate agreement on responsibilities and capacity.</p>
+    <p><a href="/contribute.html">Offering your own skills instead? →</a></p>
+  </aside>
+  <div class="form-panel">{% include "inquiry_form.html" %}</div>
+</section>
+{% endblock content %}

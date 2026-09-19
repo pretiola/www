@@ -148,11 +148,14 @@ impl From<rusqlite::Error> for IntakeError {
 impl Store {
     pub fn open(path: &Path) -> Result<Self, Box<dyn std::error::Error + Send + Sync>> {
         if let Some(parent) = path.parent().filter(|p| !p.as_os_str().is_empty()) {
+            let created = !parent.exists();
             std::fs::create_dir_all(parent)?;
             #[cfg(unix)]
             {
                 use std::os::unix::fs::PermissionsExt;
-                std::fs::set_permissions(parent, std::fs::Permissions::from_mode(0o700))?;
+                if created {
+                    std::fs::set_permissions(parent, std::fs::Permissions::from_mode(0o700))?;
+                }
             }
         }
         let db = Connection::open(path)?;

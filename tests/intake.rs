@@ -91,11 +91,7 @@ async fn native_forms_save_redirect_and_deduplicate() {
         let again = send().await.unwrap();
         assert_eq!(again.status(), 303);
         assert_eq!(again.headers()["location"], location);
-        let receipt = client
-            .get(format!("{address}{location}"))
-            .send()
-            .await
-            .unwrap();
+        let receipt = client.get(&location).send().await.unwrap();
         assert_eq!(receipt.status(), 200);
         let html = receipt.text().await.unwrap();
         assert!(html.contains("Your inquiry has been saved"));

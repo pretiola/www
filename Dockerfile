@@ -20,7 +20,7 @@ COPY src src
 RUN touch src/main.rs && cargo build --release
 
 # Asset build stage (CSS + optimized images)
-FROM node:20-slim as asset-builder
+FROM node:22-slim as asset-builder
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci

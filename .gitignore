@@ -13,3 +13,6 @@ intake-log.jsonl
 /private/
 *.sqlite3
 *.sqlite3-*
+
+.env.*
+!.env.example

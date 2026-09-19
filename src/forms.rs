@@ -200,7 +200,11 @@ pub async fn submit(
         Ok(Ok(id)) => HttpResponse::SeeOther()
             .insert_header((
                 "Location",
-                format!("/inquiries/received?receipt={}", store.receipt(&id)),
+                format!(
+                    "{}/inquiries/received?receipt={}",
+                    cfg.origin,
+                    store.receipt(&id)
+                ),
             ))
             .insert_header(("Cache-Control", "no-store"))
             .finish(),

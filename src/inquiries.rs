@@ -170,6 +170,12 @@ impl Store {
         Self::from_connection(Connection::open_in_memory().unwrap()).unwrap()
     }
     fn from_connection(db: Connection) -> Result<Self, Box<dyn std::error::Error + Send + Sync>> {
+        let version: i64 = db.query_row("PRAGMA user_version", [], |r| r.get(0))?;
+        if version > 1 {
+            return Err(
+                "Database schema is newer than this application; refusing downgrade".into(),
+            );
+        }
         db.busy_timeout(Duration::from_secs(3))?;
         db.execute_batch("PRAGMA foreign_keys=ON; PRAGMA journal_mode=WAL; PRAGMA synchronous=FULL;
             CREATE TABLE IF NOT EXISTS settings (key TEXT PRIMARY KEY, value BLOB NOT NULL);
@@ -242,7 +248,8 @@ impl Store {
         let Ok(stamp) = stamp.parse::<i64>() else {
             return false;
         };
-        (0..=86400).contains(&(at - stamp))
+        at.checked_sub(stamp)
+            .is_some_and(|age| (0..=86400).contains(&age))
             && Uuid::parse_str(nonce).is_ok()
             && self.verify(&format!("form:{session}:{kind}:{body}"), sig)
     }
@@ -353,6 +360,8 @@ mod tests {
         assert!(!s.check_token(&token, "session", "contributor", 101));
         assert!(!s.check_token(&token, "session", "ministry", 86501));
         assert!(!s.check_token(&(token + "a"), "session", "ministry", 101));
+        let extreme = format!("{}.{}.{}", i64::MIN, Uuid::new_v4(), "0".repeat(64));
+        assert!(!s.check_token(&extreme, "session", "ministry", 101));
     }
     #[test]
     fn save_is_durable_atomic_and_deduplicated() {

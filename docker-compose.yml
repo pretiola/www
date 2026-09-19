@@ -1,9 +1,15 @@
-version: '3.8'
-
 services:
   app:
     build: .
     ports:
-      - "8080:8080"
+      - "127.0.0.1:8091:8080"
     environment:
-      - RUST_LOG=info
+      RUST_LOG: info
+      BIND_ADDR: 0.0.0.0
+      PUBLIC_ORIGIN: http://localhost:8091
+      INTAKE_DB: /app/private/intake.sqlite3
+      MAIL_MODE: capture
+    volumes:
+      - intake_dev:/app/private
+volumes:
+  intake_dev:

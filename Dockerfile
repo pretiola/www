@@ -14,7 +14,7 @@ RUN cargo build --release
 RUN rm -rf src
 
 # Copy source tree
-COPY . .
+COPY src src
 
 # Build for release
 RUN touch src/main.rs && cargo build --release
@@ -23,7 +23,7 @@ RUN touch src/main.rs && cargo build --release
 FROM node:20-slim as asset-builder
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm install
+RUN npm ci
 COPY templates templates
 COPY static static
 COPY scripts scripts
@@ -35,7 +35,7 @@ RUN npm run build:favicon
 FROM debian:bookworm-slim
 
 # Install root certs and libssl
-RUN apt-get update && apt-get install -y ca-certificates libssl3 && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y ca-certificates libssl3 python3 && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
@@ -55,6 +55,7 @@ COPY --from=asset-builder /app/static/apple-touch-icon.png /app/static/apple-tou
 COPY --from=asset-builder /app/static/android-chrome-192x192.png /app/static/android-chrome-192x192.png
 COPY --from=asset-builder /app/static/android-chrome-512x512.png /app/static/android-chrome-512x512.png
 
+COPY scripts/inquiries.py /app/scripts/inquiries.py
 ENV RUST_LOG="info"
 EXPOSE 8080
 

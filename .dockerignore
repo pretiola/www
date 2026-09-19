@@ -1,7 +1,6 @@
-node_modules
-target
 .git
-*.md
-.github
-static/pictures/*.orig.*
-static/pictures/*~
+.env
+private
+target
+node_modules
+*.sqlite3*

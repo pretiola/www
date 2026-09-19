@@ -1,43 +1,36 @@
 name: Rust
-
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
-
-env:
-  CARGO_TERM_COLOR: always
-
+    branches: ["main"]
+  workflow_dispatch:
+    inputs:
+      confirm_release:
+        description: 'Type deploy-reviewed-release after local sign-off and storage checks'
+        required: true
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - name: Build
-      run: cargo build --verbose
-    - name: Run tests
-      run: cargo test --verbose
-
+      - uses: actions/checkout@v4
+      - run: cargo build --locked
+      - run: cargo test --locked
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run build:css && npm run build:images && npm run build:favicon
   deploy:
-    name: Deploy to Fly.io
-    runs-on: ubuntu-latest
     needs: build
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.confirm_release == 'deploy-reviewed-release'
+    environment: production
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Setup Flyctl
-        uses: superfly/flyctl-actions/setup-flyctl@master
-      - name: Sync runtime secrets to Fly
-        run: |
-          flyctl secrets set --stage \
-            WEB3FORMS_ACCESS_KEY="$WEB3FORMS_ACCESS_KEY" \
-            INTAKE_EMAIL="$INTAKE_EMAIL"
-        env:
-          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
-          WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
-          INTAKE_EMAIL: ${{ vars.INTAKE_EMAIL || 'contact@pretiola.org' }}
-      - name: Deploy
-        run: flyctl deploy --remote-only
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Deploy reviewed release (single writer; see operations runbook)
+        run: flyctl deploy --remote-only --ha=false
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}

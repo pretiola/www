@@ -91,7 +91,7 @@ async fn sitemap_returns_valid_xml() {
     assert!(body.contains("<urlset"));
     assert!(body.contains("pretiola.org"));
     // Should include content pages
-    assert!(body.contains("index.html"));
+    assert!(!body.contains("index.html"));
     assert!(body.contains("terms.html"));
     assert!(body.contains("privacy.html"));
     // Should NOT include partials
@@ -140,4 +140,40 @@ async fn head_requests_work() {
             response.status()
         );
     }
+}
+
+#[actix_web::test]
+async fn canonical_and_private_routes() {
+    let address = spawn_app();
+    let client = reqwest::Client::builder()
+        .redirect(reqwest::redirect::Policy::none())
+        .build()
+        .unwrap();
+    let redirect = client
+        .get(format!("{address}/index.html"))
+        .send()
+        .await
+        .unwrap();
+    assert_eq!(redirect.status(), 308);
+    assert_eq!(redirect.headers()["location"], "/");
+    for path in ["navbar", "footer", "draft"] {
+        assert_eq!(
+            client
+                .get(format!("{address}/{path}.html"))
+                .send()
+                .await
+                .unwrap()
+                .status(),
+            404
+        );
+    }
+    let robots = client
+        .get(format!("{address}/robots.txt"))
+        .send()
+        .await
+        .unwrap()
+        .text()
+        .await
+        .unwrap();
+    assert!(robots.contains("https://pretiola.org/sitemap.xml"));
 }

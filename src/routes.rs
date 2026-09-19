@@ -7,7 +7,16 @@ pub async fn index(tera: web::Data<Tera>) -> impl Responder {
 }
 
 pub async fn dynamic_page(path: web::Path<String>, tera: web::Data<Tera>) -> impl Responder {
-    render_page(&path.into_inner(), tera)
+    let page = path.into_inner();
+    if page == "index" {
+        return HttpResponse::PermanentRedirect()
+            .append_header(("Location", "/"))
+            .finish();
+    }
+    if !PUBLIC_PAGES.contains(&page.as_str()) {
+        return HttpResponse::NotFound().body("Page not found");
+    }
+    render_page(&page, tera)
 }
 
 fn render_page(page: &str, tera: web::Data<Tera>) -> HttpResponse {
@@ -29,26 +38,18 @@ fn render_page(page: &str, tera: web::Data<Tera>) -> HttpResponse {
     }
 }
 
-const PARTIALS: &[&str] = &["navbar.html", "footer.html"];
+const PUBLIC_PAGES: &[&str] = &["privacy", "terms"];
 const BASE_URL: &str = "https://pretiola.org";
 
-pub async fn sitemap(tera: web::Data<Tera>) -> impl Responder {
-    let mut urls = Vec::new();
-    urls.push(format!("  <url><loc>{}/</loc></url>", BASE_URL));
-
-    let mut template_names: Vec<&str> = tera
-        .get_template_names()
-        .filter(|name| name.ends_with(".html") && !PARTIALS.contains(name))
-        .collect();
-    template_names.sort();
-
-    for name in template_names {
-        urls.push(format!("  <url><loc>{}/{}</loc></url>", BASE_URL, name));
+pub async fn sitemap() -> impl Responder {
+    let mut urls = vec![format!("  <url><loc>{}/</loc></url>", BASE_URL)];
+    for page in PUBLIC_PAGES {
+        urls.push(format!(
+            "  <url><loc>{}/{}.html</loc></url>",
+            BASE_URL, page
+        ));
     }
-
-    let xml = format!(
-        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n{}\n</urlset>\n",
-        urls.join("\n")
-    );
-    HttpResponse::Ok().content_type("application/xml").body(xml)
+    HttpResponse::Ok().content_type("application/xml").body(format!(
+        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n{}\n</urlset>", urls.join("\n")
+    ))
 }

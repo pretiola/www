@@ -10,3 +10,6 @@ static/android-chrome-*.png
 static/favicon.ico
 .env
 intake-log.jsonl
+/private/
+*.sqlite3
+*.sqlite3-*

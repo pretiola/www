@@ -33,10 +33,10 @@ async fn health_check_works() {
     assert!(response.status().is_success());
     let body = response.text().await.expect("Failed to get body");
     assert!(body.contains("Pretiola"));
-    assert!(body.contains("Catholic ministries"));
-    assert!(body.contains("Advisory"));
+    assert!(body.contains("Catholic faith"));
+    assert!(body.contains("How we help"));
     assert!(body.contains("ministry-intake"));
-    assert!(body.contains("Uganda PoC"));
+    assert!(body.contains("Binzi, Uganda"));
 }
 
 #[actix_web::test]

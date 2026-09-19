@@ -1,62 +1,12 @@
-<nav class="fixed w-full z-50 bg-brand-cream/95 backdrop-blur-sm border-b-2 border-brand-gold/40">
-    <div class="max-w-{% if page_name == "index" %}6{% else %}4{% endif %}xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-20 items-center">
-            <div class="flex-shrink-0 flex items-center{% if page_name == "index" %} w-56{% endif %}">
-                <a href="/" class="font-display text-2xl text-brand-oxblood tracking-wider">Pretiola <span class="not-italic">&#x1F968;</span></a>
-            </div>
-            {% if page_name == "index" %}
-            <div class="hidden xl:flex space-x-10 justify-center flex-1">
-                <a href="#about" class="nav-link text-lg font-serif font-medium text-brand-brown/70 hover:text-brand-oxblood uppercase tracking-[0.2em] transition">Identity</a>
-                <a href="#advisory" class="nav-link text-lg font-serif font-medium text-brand-brown/70 hover:text-brand-oxblood uppercase tracking-[0.2em] transition">Advisory</a>
-                <a href="#poc" class="nav-link text-lg font-serif font-medium text-brand-brown/70 hover:text-brand-oxblood uppercase tracking-[0.2em] transition">Uganda PoC</a>
-            </div>
-            <div class="hidden xl:flex w-56 justify-end">
-                <a href="#ministry-intake" class="font-serif text-lg uppercase tracking-widest border-2 border-brand-gold text-brand-brown px-5 py-2.5 hover:bg-brand-gold hover:text-white transition duration-300 whitespace-nowrap text-center">Partner With Us</a>
-            </div>
-            <!-- Mobile hamburger -->
-            <button id="menu-toggle" class="xl:hidden text-brand-brown p-2" aria-label="Open menu">
-                <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
-                <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-            </button>
-            {% else %}
-            <a href="/" class="font-serif text-lg uppercase tracking-widest text-brand-brown hover:text-brand-gold transition duration-300">
-                &larr; Return to Home
-            </a>
-            {% endif %}
-        </div>
+<header class="site-header">
+  <nav class="wrap navigation" aria-label="Main navigation">
+    <a class="wordmark" href="/" aria-label="Pretiola home"><span class="brand-cross" aria-hidden="true">✣</span> Pretiola<span class="wordmark-sub">An independent initiative</span></a>
+    <div class="nav-links">
+      <a href="/#about">About</a>
+      <a href="/#advisory">How we help</a>
+      <a href="/#poc">Our work</a>
+      <a href="/for_ministries.html" {% if page_name == 'for_ministries' %}aria-current="page"{% endif %}>For ministries</a>
+      <a class="nav-contribute" href="/contribute.html" {% if page_name == 'contribute' %}aria-current="page"{% endif %}>Contribute <span aria-hidden="true">↗</span></a>
     </div>
-    {% if page_name == "index" %}
-    <!-- Mobile menu -->
-    <div id="mobile-menu" class="hidden xl:hidden bg-brand-cream border-t border-brand-gold/30">
-        <div class="px-6 py-6 space-y-4">
-            <a href="#about" class="mobile-nav-link block text-lg font-serif font-medium text-brand-brown/70 hover:text-brand-oxblood uppercase tracking-[0.2em] transition">Identity</a>
-            <a href="#advisory" class="mobile-nav-link block text-lg font-serif font-medium text-brand-brown/70 hover:text-brand-oxblood uppercase tracking-[0.2em] transition">Advisory</a>
-            <a href="#poc" class="mobile-nav-link block text-lg font-serif font-medium text-brand-brown/70 hover:text-brand-oxblood uppercase tracking-[0.2em] transition">Uganda PoC</a>
-            <a href="#ministry-intake" class="mobile-nav-link block font-serif text-lg uppercase tracking-widest border-2 border-brand-gold text-brand-brown px-6 py-2.5 hover:bg-brand-gold hover:text-white transition duration-300 text-center mt-4">Partner With Us</a>
-        </div>
-    </div>
-    {% endif %}
-</nav>
-{% if page_name == "index" %}
-<script>
-    document.getElementById('menu-toggle').addEventListener('click', function() {
-        var menu = document.getElementById('mobile-menu');
-        var iconOpen = document.getElementById('menu-icon-open');
-        var iconClose = document.getElementById('menu-icon-close');
-        menu.classList.toggle('hidden');
-        iconOpen.classList.toggle('hidden');
-        iconClose.classList.toggle('hidden');
-    });
-    document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
-        link.addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.add('hidden');
-            document.getElementById('menu-icon-open').classList.remove('hidden');
-            document.getElementById('menu-icon-close').classList.add('hidden');
-        });
-    });
-</script>
-{% endif %}
+  </nav>
+</header>

@@ -19,17 +19,20 @@
   <div class="field">
     <label for="mode">How would you like to contribute? <span class="required">(required)</span></label>
     <select id="mode" name="mode" required {% if errors.mode is defined %}aria-invalid="true" aria-describedby="error-mode"{% endif %}>
-      <option value="">Choose an area of interest</option>
-      <option value="professional" {% if form.mode == 'professional' %}selected{% endif %}>A scoped professional contribution</option>
-      <option value="mentoring" {% if form.mode == 'mentoring' %}selected{% endif %}>Mentoring or reviewing work</option>
-      <option value="learning" {% if form.mode == 'learning' %}selected{% endif %}>Learning through supervised service</option>
+      <option value="">Choose how you would like to help</option>
+      <option value="professional" {% if form.mode == 'professional' %}selected{% endif %}>Volunteer my professional skills</option>
+      <option value="mentoring" {% if form.mode == 'mentoring' %}selected{% endif %}>Mentor volunteers and review their work</option>
+      <option value="learning" {% if form.mode == 'learning' %}selected{% endif %}>Volunteer as an apprentice — build skills</option>
+      <option value="donor" {% if form.mode == 'donor' %}selected{% endif %}>Support the work as a donor</option>
+      <option value="ministry" {% if form.mode == 'ministry' %}selected{% endif %}>Find help for my ministry</option>
     </select>
+    <p class="field-hint">Apprentices can build skills and résumé experience through supervised volunteer work. Ministries can also use our <a href="/for_ministries.html">dedicated ministry form</a>. Donor inquiries do not collect payment.</p>
     {% if errors.mode is defined %}<p id="error-mode" class="field-error">{{ errors.mode }}</p>{% endif %}
   </div>
   {% endif %}
   <div class="field">
     <label for="message">{% if kind == 'ministry' %}What practical problem would you like help with?{% else %}What would you like to contribute or learn?{% endif %} <span class="required">(required)</span></label>
-    <p id="message-hint" class="field-hint">{% if kind == 'ministry' %}A little context and the result you need are enough to start.{% else %}Tell us about your relevant experience and what interests you.{% endif %} Up to 2,000 characters. Please leave out confidential or sensitive information.</p>
+    <p id="message-hint" class="field-hint">{% if kind == 'ministry' %}A little context and the result you need are enough to start.{% else %}Tell us what you hope to learn, the expertise you can offer, or how you would like to support the work. If you represent a ministry, include its name and what help you need.{% endif %} Up to 2,000 characters. Please leave out confidential or sensitive information.</p>
     <textarea id="message" name="message" rows="7" maxlength="2000" required aria-describedby="message-hint{% if errors.message is defined %} error-message{% endif %}" {% if errors.message is defined %}aria-invalid="true"{% endif %}>{{ form.message }}</textarea>
     {% if errors.message is defined %}<p id="error-message" class="field-error">{{ errors.message }}</p>{% endif %}
   </div>
@@ -46,6 +49,6 @@
     {% if errors.consent is defined %}<p id="error-consent" class="field-error">{{ errors.consent }}</p>{% endif %}
   </div>
   <p class="form-notice">We use these details to review and reply to your inquiry. Please do not send identity documents, credentials or private information about others. <a href="/privacy.html">How we handle your information</a>.</p>
-  <button type="submit" class="button">{% if kind == 'ministry' %}Send a ministry inquiry{% else %}Send an introduction{% endif %} <span aria-hidden="true">→</span></button>
+  <button type="submit" class="button">{% if kind == 'ministry' %}Send a ministry inquiry{% else %}Send an introduction{% endif %} </button>
   <p class="field-hint">An inquiry is a first conversation, not a commitment or a confirmed placement. Prefer email? <a href="mailto:contact@pretiola.org">contact@pretiola.org</a></p>
 </form>

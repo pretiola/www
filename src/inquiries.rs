@@ -98,7 +98,8 @@ impl Inquiry {
             );
         }
         if kind == "contributor"
-            && !["professional", "mentoring", "learning"].contains(&self.mode.as_str())
+            && !["professional", "mentoring", "learning", "donor", "ministry"]
+                .contains(&self.mode.as_str())
         {
             errors.insert(
                 "mode".into(),

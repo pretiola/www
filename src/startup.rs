@@ -49,7 +49,7 @@ pub fn run_with_store(
             .wrap(
                 DefaultHeaders::new()
                     .add(("X-Content-Type-Options", "nosniff"))
-                    .add(("Referrer-Policy", "no-referrer"))
+                    .add(("Referrer-Policy", "strict-origin-when-cross-origin"))
                     .add(("X-Frame-Options", "DENY")),
             )
             .service(

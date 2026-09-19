@@ -81,9 +81,7 @@ pub fn render_form(
     store: &Store,
     cfg: &SiteConfig,
     page: &str,
-    mut form: Inquiry,
-    errors: BTreeMap<String, String>,
-    status: StatusCode,
+    (mut form, errors, status): (Inquiry, BTreeMap<String, String>, StatusCode),
 ) -> HttpResponse {
     let session = session(req);
     if !store.check_token(&form.token, &session, kind(page).unwrap(), now()) {
@@ -146,9 +144,7 @@ pub async fn form_page(
         &store,
         &cfg,
         page,
-        Inquiry::default(),
-        BTreeMap::new(),
-        StatusCode::OK,
+        (Inquiry::default(), BTreeMap::new(), StatusCode::OK),
     )
 }
 pub async fn submit(
@@ -196,7 +192,7 @@ pub async fn submit(
         errors = form.validate(&kind);
     }
     if !errors.is_empty() {
-        return render_form(&req, &tera, &store, &cfg, page, form, errors, status);
+        return render_form(&req, &tera, &store, &cfg, page, (form, errors, status));
     }
     let data = form.clone();
     let state = store.clone();
@@ -220,13 +216,15 @@ pub async fn submit(
                 &store,
                 &cfg,
                 page,
-                form,
-                errors,
-                if limited {
-                    StatusCode::TOO_MANY_REQUESTS
-                } else {
-                    StatusCode::SERVICE_UNAVAILABLE
-                },
+                (
+                    form,
+                    errors,
+                    if limited {
+                        StatusCode::TOO_MANY_REQUESTS
+                    } else {
+                        StatusCode::SERVICE_UNAVAILABLE
+                    },
+                ),
             )
         }
     }

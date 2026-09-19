@@ -15,7 +15,7 @@ fn spawn_app() -> String {
         },
     )
     .expect("Failed to bind address");
-    let _ = spawn(server);
+    spawn(server);
     format!("http://127.0.0.1:{}", port)
 }
 
@@ -25,7 +25,7 @@ async fn health_check_works() {
     let client = reqwest::Client::new();
 
     let response = client
-        .get(&format!("{}/", &address))
+        .get(format!("{}/", &address))
         .send()
         .await
         .expect("Failed to execute request.");
@@ -48,7 +48,7 @@ async fn all_pages_return_200() {
 
     for page in pages {
         let response = client
-            .get(&format!("{}{}", &address, page))
+            .get(format!("{}{}", &address, page))
             .send()
             .await
             .unwrap_or_else(|_| panic!("Failed to request {}", page));
@@ -67,7 +67,7 @@ async fn nonexistent_page_returns_404() {
     let client = reqwest::Client::new();
 
     let response = client
-        .get(&format!("{}/nonexistent.html", &address))
+        .get(format!("{}/nonexistent.html", &address))
         .send()
         .await
         .expect("Failed to execute request.");
@@ -81,7 +81,7 @@ async fn sitemap_returns_valid_xml() {
     let client = reqwest::Client::new();
 
     let response = client
-        .get(&format!("{}/sitemap.xml", &address))
+        .get(format!("{}/sitemap.xml", &address))
         .send()
         .await
         .expect("Failed to execute request.");
@@ -117,7 +117,7 @@ async fn head_requests_work() {
 
     for page in pages {
         let response = client
-            .head(&format!("{}{}", &address, page))
+            .head(format!("{}{}", &address, page))
             .send()
             .await
             .unwrap_or_else(|_| panic!("HEAD request failed for {}", page));

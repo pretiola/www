@@ -9,7 +9,7 @@ use std::time::Duration;
 pub enum Delivery {
     Capture,
     Smtp {
-        transport: SmtpTransport,
+        transport: Box<SmtpTransport>,
         from: Mailbox,
         to: Mailbox,
     },
@@ -29,7 +29,7 @@ impl Delivery {
                     .timeout(Some(Duration::from_secs(15)))
                     .build();
                 Ok(Self::Smtp {
-                    transport,
+                    transport: Box::new(transport),
                     from,
                     to,
                 })

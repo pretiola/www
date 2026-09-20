@@ -21,6 +21,7 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci
+      - run: node --test tests/analytics.test.cjs
       - run: npm run build:css && npm run build:images && npm run build:favicon
   deploy:
     needs: build

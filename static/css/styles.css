@@ -263,3 +263,14 @@ code { font-size:.9em; overflow-wrap:anywhere; }
 /* The frame never receives gestures; desktop mouse hover is forwarded by the parent. */
 .mhri-window iframe { pointer-events:none; }
 .mhri-window { touch-action:auto; }
+
+/* Optional analytics choices remain separate from the essential form cookie. */
+.privacy-choices[hidden],.privacy-settings[hidden],#privacy-close[hidden]{display:none}
+.privacy-choices{position:fixed;inset:auto 1rem 1rem;z-index:50;max-width:980px;margin-inline:auto;padding:1.2rem;background:var(--cream);border:1px solid var(--line);box-shadow:0 5px 30px #2c181030;max-height:65vh;overflow:auto}
+.privacy-choices h2{font-size:1.35rem;margin-bottom:.6rem}
+.privacy-choices p{font-size:.85rem;line-height:1.5}
+.privacy-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+.privacy-actions button{flex:1;min-width:160px;padding:.65rem;border:1px solid var(--wine);color:var(--wine);background:transparent;font-family:Arial,sans-serif;font-size:.78rem;cursor:pointer}
+.privacy-actions button:hover{background:var(--paper)}
+.privacy-settings,#privacy-close{background:none;border:0;text-decoration:underline;cursor:pointer;color:inherit;font:inherit}
+#privacy-close{margin-top:.7rem;font-size:.8rem}

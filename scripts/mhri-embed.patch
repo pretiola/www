@@ -1,0 +1,280 @@
+diff --git a/index.html b/index.html
+index dfaae24..b7bd38b 100644
+--- a/index.html
++++ b/index.html
+@@ -11,7 +11,7 @@
+   </head>
+   <body>
+     <div id="root"></div>
+-    <noscript><img src="/art/le-bon-pasteur.png" alt="Le Bon Pasteur — Christ carrying a sheep across his shoulders" style="display:block;width:100%;height:100vh;object-fit:contain" /></noscript>
++    <noscript><img src="/static/mhri/art/le-bon-pasteur.png" alt="Le Bon Pasteur — Christ carrying a sheep across his shoulders" style="display:block;width:100%;height:100vh;object-fit:contain" /></noscript>
+     <script type="module" src="/src/main.tsx"></script>
+   </body>
+ </html>
+diff --git a/src/artwork.tsx b/src/artwork.tsx
+index c2fb37f..6bb9e7f 100644
+--- a/src/artwork.tsx
++++ b/src/artwork.tsx
+@@ -64,22 +64,22 @@ export function Artwork({ motion, original, depth, focus, cloudSpeed, neuromance
+     onPointerLeave={()=>{target.current.active=false;target.current.last=performance.now();}}
+     onKeyDown={e=>{const directions:Record<string,[number,number]>={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]};const dir=directions[e.key];if(dir&&motion&&!original){e.preventDefault();target.current={x:dir[0],y:dir[1],last:performance.now(),active:false};}}}>
+     <div className="landscape-space" aria-hidden="true">
+-      <img className="cloud-sky" src="/art/cloud-sky.png" alt="" draggable="false"/>
+-      <img ref={environment} className="landscape-image landscape-foreground" src="/art/landscape-wide.png" alt="" draggable="false"/>
++      <img className="cloud-sky" src="/static/mhri/art/cloud-sky.png" alt="" draggable="false"/>
++      <img ref={environment} className="landscape-image landscape-foreground" src="/static/mhri/art/landscape-wide.png" alt="" draggable="false"/>
+     </div>
+     <div className="near-landscape" aria-hidden="true"/>
+     <figure className="art-frame">
+       <div className={`scene-window ${meshReady?'mesh-ready':''}`}>
+         <div className="halo-aureole" aria-hidden="true" />
+         {neuromancer&&!original&&<div className="projection-pool" aria-hidden="true"/>}
+-        <img className="painting original-painting" src="/art/le-bon-pasteur.png" alt="Le Bon Pasteur: Christ wears a blue mantle and pink tunic, carries a sheep across his shoulders, and holds a staff in a wooded landscape." width="798" height="1260" fetchPriority="high" draggable="false" />
++        <img className="painting original-painting" src="/static/mhri/art/le-bon-pasteur.png" alt="Le Bon Pasteur: Christ wears a blue mantle and pink tunic, carries a sheep across his shoulders, and holds a staff in a wooded landscape." width="798" height="1260" fetchPriority="high" draggable="false" />
+         <canvas ref={shadow} className="figure-shadow" aria-hidden="true" style={{
+           left: `${SHADOW_BOUNDS.x / 798 * 100}%`, top: `${SHADOW_BOUNDS.y / 1260 * 100}%`,
+           width: `${SHADOW_BOUNDS.width / 798 * 100}%`, height: `${SHADOW_BOUNDS.height / 1260 * 100}%`,
+         }}/>
+         <svg className="depth-scene" viewBox="0 0 798 1260" aria-hidden="true" focusable="false">
+           <defs>
+-            <image id="original-art" href="/art/le-bon-pasteur.png" width="798" height="1260" preserveAspectRatio="none"/>
++            <image id="original-art" href="/static/mhri/art/le-bon-pasteur.png" width="798" height="1260" preserveAspectRatio="none"/>
+             <g id="subject-shape"><path d={figure}/></g>
+             <filter id="soft-mask" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="0.65"/></filter>
+             <mask id="subject-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="798" height="1260" style={{maskType:'luminance'}}><use href="#subject-shape" fill="white" color="white" filter="url(#soft-mask)"/></mask>
+diff --git a/src/figure-mesh.tsx b/src/figure-mesh.tsx
+index 83628c6..16fc93f 100644
+--- a/src/figure-mesh.tsx
++++ b/src/figure-mesh.tsx
+@@ -182,7 +182,7 @@ export function FigureMesh({ shape, motion, onReady, neuromancer, signalMotion,
+       gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
+ 
+       const painting = new Image();
+-      painting.src = '/art/le-bon-pasteur.png';
++      painting.src = '/static/mhri/art/le-bon-pasteur.png';
+       await painting.decode();
+       if (disposed) return;
+       // Reuse the corrected silhouette. Masking happens once at load time;
+diff --git a/src/fonts.css b/src/fonts.css
+index ddd7849..0f07b3f 100644
+--- a/src/fonts.css
++++ b/src/fonts.css
+@@ -1,10 +1,10 @@
+-/* Self-hosted Google Fonts. Licenses are in public/fonts/. */
++/* Self-hosted Google Fonts. Licenses are in public/static/mhri/fonts/. */
+ @font-face {
+   font-family: 'Almendra';
+   font-style: normal;
+   font-weight: 400;
+   font-display: swap;
+-  src: url(/fonts/almendra-b7737fc09a.ttf) format('truetype');
++  src: url(/static/mhri/fonts/almendra-b7737fc09a.ttf) format('truetype');
+ }
+ 
+ @font-face {
+@@ -12,7 +12,7 @@
+   font-style: italic;
+   font-weight: 400;
+   font-display: swap;
+-  src: url(/fonts/cormorant-garamond-0b9a8a33cf.ttf) format('truetype');
++  src: url(/static/mhri/fonts/cormorant-garamond-0b9a8a33cf.ttf) format('truetype');
+ }
+ 
+ @font-face {
+@@ -20,7 +20,7 @@
+   font-style: italic;
+   font-weight: 500;
+   font-display: swap;
+-  src: url(/fonts/cormorant-garamond-14efb94436.ttf) format('truetype');
++  src: url(/static/mhri/fonts/cormorant-garamond-14efb94436.ttf) format('truetype');
+ }
+ 
+ @font-face {
+@@ -28,7 +28,7 @@
+   font-style: italic;
+   font-weight: 600;
+   font-display: swap;
+-  src: url(/fonts/cormorant-garamond-8ddad6fd24.ttf) format('truetype');
++  src: url(/static/mhri/fonts/cormorant-garamond-8ddad6fd24.ttf) format('truetype');
+ }
+ 
+ @font-face {
+@@ -36,7 +36,7 @@
+   font-style: normal;
+   font-weight: 400;
+   font-display: swap;
+-  src: url(/fonts/cormorant-garamond-6d37a86241.ttf) format('truetype');
++  src: url(/static/mhri/fonts/cormorant-garamond-6d37a86241.ttf) format('truetype');
+ }
+ 
+ @font-face {
+@@ -44,7 +44,7 @@
+   font-style: normal;
+   font-weight: 500;
+   font-display: swap;
+-  src: url(/fonts/cormorant-garamond-1724047c89.ttf) format('truetype');
++  src: url(/static/mhri/fonts/cormorant-garamond-1724047c89.ttf) format('truetype');
+ }
+ 
+ @font-face {
+@@ -52,7 +52,7 @@
+   font-style: normal;
+   font-weight: 600;
+   font-display: swap;
+-  src: url(/fonts/cormorant-garamond-69e7ae35cb.ttf) format('truetype');
++  src: url(/static/mhri/fonts/cormorant-garamond-69e7ae35cb.ttf) format('truetype');
+ }
+ 
+ @font-face {
+@@ -60,7 +60,7 @@
+   font-style: normal;
+   font-weight: 400;
+   font-display: swap;
+-  src: url(/fonts/inter-1b08e7fc26.ttf) format('truetype');
++  src: url(/static/mhri/fonts/inter-1b08e7fc26.ttf) format('truetype');
+ }
+ 
+ @font-face {
+@@ -68,7 +68,7 @@
+   font-style: normal;
+   font-weight: 500;
+   font-display: swap;
+-  src: url(/fonts/inter-8c883f63b2.ttf) format('truetype');
++  src: url(/static/mhri/fonts/inter-8c883f63b2.ttf) format('truetype');
+ }
+ 
+ @font-face {
+@@ -76,7 +76,7 @@
+   font-style: normal;
+   font-weight: 600;
+   font-display: swap;
+-  src: url(/fonts/inter-e7a1aaf7ed.ttf) format('truetype');
++  src: url(/static/mhri/fonts/inter-e7a1aaf7ed.ttf) format('truetype');
+ }
+ 
+ :root { --font-wordmark: 'Almendra'; --font-cormorant: 'Cormorant Garamond'; --font-inter: 'Inter'; }
+diff --git a/src/globals.css b/src/globals.css
+index 7bf7d29..221e41c 100644
+--- a/src/globals.css
++++ b/src/globals.css
+@@ -7,8 +7,8 @@
+ *{box-sizing:border-box}html,body{margin:0;width:100%;min-height:100%;background:var(--background);color:var(--foreground)}body{font-family:var(--font-inter),Arial,sans-serif}button,a,input{-webkit-tap-highlight-color:transparent}button{font:inherit;color:inherit;cursor:pointer}button,a{touch-action:manipulation}button:focus-visible,a:focus-visible{outline:2px solid #efd79f;outline-offset:6px}a{color:inherit}::selection{background:#b18a48;color:#111715}
+ .sanctuary{position:relative;isolation:isolate;height:100svh;height:100dvh;min-height:320px;overflow:hidden;background:#313b33;}
+ .art-interaction{position:absolute;inset:0;--px:0;--py:0;--cloud-x:0px;--cloud-y:0px;touch-action:pinch-zoom;perspective:1500px;}.art-interaction:focus-visible{outline:1px solid #c5a46199;outline-offset:-10px}
+-.landscape-space{position:absolute;inset:-20px;transform:translate3d(calc(var(--px)*-9px),calc(var(--py)*-6px),0) scale(1.015);will-change:transform;}.landscape-image,.cloud-sky{position:absolute;inset:0;height:100%;width:100%;object-fit:cover;object-position:50% 50%;display:block;}.cloud-sky{transform:translate3d(calc(var(--cloud-x) + var(--px)*-2px),calc(var(--cloud-y) + var(--py)*-1px),0) scale(1.10);will-change:transform;}.landscape-foreground{mask-image:url('/art/landscape-foreground-mask.svg');mask-size:cover;mask-position:center;mask-repeat:no-repeat;}.is-original .landscape-foreground{mask-image:none}.figure-shadow{position:absolute;mix-blend-mode:multiply;pointer-events:none;}.is-original .figure-shadow{display:none}.has-focus .landscape-space{filter:blur(.8px)}
+-.near-landscape{position:absolute;inset:-20px;background:url('/art/landscape-wide.png') center/cover no-repeat;mask-image:linear-gradient(to bottom,transparent 79%,#000 98%);transform:translate3d(calc(var(--px)*5px),calc(var(--py)*3px),0) scale(1.015);pointer-events:none;will-change:transform;}.has-focus .near-landscape{filter:blur(.35px)}
++.landscape-space{position:absolute;inset:-20px;transform:translate3d(calc(var(--px)*-9px),calc(var(--py)*-6px),0) scale(1.015);will-change:transform;}.landscape-image,.cloud-sky{position:absolute;inset:0;height:100%;width:100%;object-fit:cover;object-position:50% 50%;display:block;}.cloud-sky{transform:translate3d(calc(var(--cloud-x) + var(--px)*-2px),calc(var(--cloud-y) + var(--py)*-1px),0) scale(1.10);will-change:transform;}.landscape-foreground{mask-image:url('/static/mhri/art/landscape-foreground-mask.svg');mask-size:cover;mask-position:center;mask-repeat:no-repeat;}.is-original .landscape-foreground{mask-image:none}.figure-shadow{position:absolute;mix-blend-mode:multiply;pointer-events:none;}.is-original .figure-shadow{display:none}.has-focus .landscape-space{filter:blur(.8px)}
++.near-landscape{position:absolute;inset:-20px;background:url('/static/mhri/art/landscape-wide.png') center/cover no-repeat;mask-image:linear-gradient(to bottom,transparent 79%,#000 98%);transform:translate3d(calc(var(--px)*5px),calc(var(--py)*3px),0) scale(1.015);pointer-events:none;will-change:transform;}.has-focus .near-landscape{filter:blur(.35px)}
+ .art-frame{position:absolute;left:50%;top:48%;margin:0;height:calc(100% - 54px);width:auto;aspect-ratio:798/1260;max-width:calc(100vw - 34px);transform:translate(-50%,-50%) translate3d(calc(var(--px)*5px),calc(var(--py)*3px),0) rotateY(calc(var(--px)*.65deg)) rotateX(calc(var(--py)*-.35deg));transform-origin:50% 86%;will-change:transform;}
+ .scene-window{position:relative;width:100%;height:100%;}.painting{width:100%;height:100%;object-fit:contain;display:block;}.original-painting{opacity:0;pointer-events:none;}.depth-scene{position:absolute;inset:0;width:100%;height:100%;display:block;overflow:visible;}.figure-detail{filter:none}.figure-mesh{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0;}.mesh-ready .figure-mesh{opacity:1}.mesh-ready .figure-detail{visibility:hidden}.is-original .figure-mesh{display:none}.is-original .original-painting{opacity:1}.is-original .depth-scene{display:none}.is-original .art-frame{transform:translate(-50%,-50%)}
+ .halo-aureole{position:absolute;left:54.5%;top:11.8%;width:42%;aspect-ratio:1;border-radius:50%;pointer-events:none;background:radial-gradient(circle closest-side,rgba(255,218,126,.62) 0%,rgba(249,202,98,.49) 22%,rgba(234,176,62,.31) 44%,rgba(221,159,41,.14) 64%,rgba(211,148,36,.035) 82%,rgba(211,148,36,0) 100%);mix-blend-mode:screen;transform:translate(-50%,-50%) translate3d(calc(var(--px)*-5px),calc(var(--py)*-2.5px),0);will-change:transform;}.is-original .halo-aureole{display:none}.halo-detail{mix-blend-mode:screen}
+diff --git a/src/page.tsx b/src/page.tsx
+index da8c7b9..bac1432 100644
+--- a/src/page.tsx
++++ b/src/page.tsx
+@@ -1,98 +1,12 @@
+-'use client';
+ import { useEffect, useState } from 'react';
+-import { ArrowUpRight, Check } from 'lucide-react';
+-import { Checkbox } from '@base-ui/react/checkbox';
+-import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
+-import { Switch } from '@/components/ui/switch';
+-import { Slider } from '@/components/ui/slider';
+ import { Artwork } from './artwork';
+-import { toRomanYear } from './roman-year';
+-
+-const DEFAULT_CLOUD_SPEED = 3;
+-
+-function Copyright() {
+-  const [year, setYear] = useState(() => new Date().getFullYear());
++export default function Home() {
++  const [motion, setMotion] = useState(false);
+   useEffect(() => {
+-    const updateYear = () => setYear(new Date().getFullYear());
+-    updateYear();
+-    const interval = window.setInterval(updateYear, 60_000);
+-    document.addEventListener('visibilitychange', updateYear);
+-    window.addEventListener('focus', updateYear);
+-    return () => {
+-      window.clearInterval(interval);
+-      document.removeEventListener('visibilitychange', updateYear);
+-      window.removeEventListener('focus', updateYear);
+-    };
++    const preference = matchMedia('(prefers-reduced-motion: reduce)');
++    const update = () => setMotion(!preference.matches);
++    update(); preference.addEventListener('change', update);
++    return () => preference.removeEventListener('change', update);
+   }, []);
+-  return <p className="copyright">© <span suppressHydrationWarning>{toRomanYear(year)}</span> Magnifica Humanitas Redemptoris Iesu. <span className="copyright-rights">All rights reserved.</span></p>;
+-}
+-
+-export default function Home() {
+-  const [motion,setMotion]=useState(false);
+-  const [original,setOriginal]=useState(false);
+-  const [depth,setDepth]=useState(75);
+-  const [cloudSpeed,setCloudSpeed]=useState(DEFAULT_CLOUD_SPEED);
+-  const [focus,setFocus]=useState(true);
+-  // Start with the painting; visitors can enable the effect in About the painting.
+-  const [neuromancer,setNeuromancer]=useState(false);
+-  const [reduced,setReduced]=useState(false);
+-  const [ready,setReady]=useState(false);
+-  useEffect(()=>{
+-    const mq=matchMedia('(prefers-reduced-motion: reduce)');
+-    let saved:{motion?:boolean;depth?:number;focus?:boolean;cloudSpeed?:number;cloudSpeedDefault?:number}={};
+-    try{saved=JSON.parse(localStorage.getItem('mhri-view')||'{}')||{};}catch{}
+-    setReduced(mq.matches);setMotion(!mq.matches&&saved.motion!==false);
+-    if(typeof saved.depth==='number')setDepth(Math.max(0,Math.min(100,saved.depth)));
+-    if(typeof saved.focus==='boolean')setFocus(saved.focus);
+-    // Apply the new baseline once, then keep remembering the visitor's adjustments.
+-    if(saved.cloudSpeedDefault===DEFAULT_CLOUD_SPEED&&typeof saved.cloudSpeed==='number'&&Number.isFinite(saved.cloudSpeed))setCloudSpeed(Math.max(0,Math.min(4,saved.cloudSpeed)));
+-    setReady(true);
+-    const preference=()=>{setReduced(mq.matches);if(mq.matches)setMotion(false);};
+-    mq.addEventListener('change',preference);
+-    return()=>mq.removeEventListener('change',preference);
+-  },[]);
+-  useEffect(()=>{if(ready)try{localStorage.setItem('mhri-view',JSON.stringify({motion,depth,focus,cloudSpeed,cloudSpeedDefault:DEFAULT_CLOUD_SPEED}));}catch{}},[motion,depth,focus,cloudSpeed,ready]);
+-  return <main className="sanctuary">
+-    <h1 className="sr-only">MHRI — Magnifica Humanitas Redemptoris Iesu</h1>
+-    <svg className="wordmark-effects" width="0" height="0" aria-hidden="true" focusable="false">
+-      <defs>
+-        <filter id="mhri-gold-finish" x="-40%" y="-60%" width="180%" height="220%" primitiveUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+-          <feMorphology in="SourceAlpha" operator="dilate" radius="1" result="letter-edge"/>
+-          <feFlood floodColor="#493e2c" result="bronze"/>
+-          <feComposite in="bronze" in2="letter-edge" operator="in" result="border"/>
+-          <feOffset in="SourceAlpha" dx=".6" dy=".6" result="inset-edge"/>
+-          <feComposite in="SourceAlpha" in2="inset-edge" operator="out" result="light-edge"/>
+-          <feFlood floodColor="#c5ab7c" floodOpacity=".65" result="edge-gold"/>
+-          <feComposite in="edge-gold" in2="light-edge" operator="in" result="bevel"/>
+-          <feMerge result="outlined"><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/><feMergeNode in="bevel"/></feMerge>
+-          <feDropShadow in="outlined" dx=".6" dy="1" stdDeviation=".4" floodColor="#28251f" floodOpacity=".6" result="relief"/>
+-          <feDropShadow in="relief" dx="0" dy="0" stdDeviation="2.5" floodColor="#333333" floodOpacity=".4"/>
+-        </filter>
+-      </defs>
+-    </svg>
+-    <Artwork motion={motion} original={original} depth={depth} focus={focus} cloudSpeed={cloudSpeed} neuromancer={neuromancer} signalMotion={motion&&!reduced}/>
+-    <header className="masthead"><a className="wordmark" href="/" aria-label="MHRI — Magnifica Humanitas Redemptoris Iesu"><span>MHRI</span></a></header>
+-    <footer className="viewer-footer">
+-      <Copyright />
+-      <Dialog><DialogTrigger className="about-button">About the painting</DialogTrigger><DialogContent className="view-dialog">
+-        <DialogTitle className="dialog-title" lang="fr">Le Bon Pasteur</DialogTitle><DialogDescription className="dialog-description">The Good Shepherd · Seventeenth century</DialogDescription>
+-        <p>Christ carries a sheep across his shoulders, an image of care, protection, and the recovery of the lost.</p>
+-        <p>The painting is held at the Musée national de Port-Royal des Champs. Often reproduced under Philippe de Champaigne’s name, the museum currently lists Jean-Baptiste de Champaigne and discusses the attribution.</p>
+-        <a className="source-link" href="https://port-royal-des-champs.fr/le-bon-pasteur/" target="_blank" rel="noreferrer">Explore the museum record <ArrowUpRight size={16}/></a>
+-        <div className="setting-row"><label htmlFor="motion-switch">Motion</label><Switch id="motion-switch" checked={motion} onCheckedChange={setMotion}/></div>
+-        {reduced&&<p className="preference-note">Movement starts off to respect your device’s reduced-motion preference.</p>}
+-        <div className="depth-setting"><div className="setting-label"><label id="depth-label">Depth</label><output>{depth}%</output></div><Slider aria-labelledby="depth-label" value={[depth]} min={0} max={100} step={5} onValueChange={v=>setDepth(Array.isArray(v)?v[0]:v)}/></div>
+-        <div className="depth-setting"><div className="setting-label"><label id="cloud-speed-label">Cloud speed</label><output>{cloudSpeed===0?'Still':`${cloudSpeed}×`}</output></div><Slider aria-labelledby="cloud-speed-label" value={[cloudSpeed]} min={0} max={4} step={.25} onValueChange={v=>setCloudSpeed(Array.isArray(v)?v[0]:v)}/></div>
+-        <div className="setting-row"><label htmlFor="focus-switch">Atmospheric focus</label><Switch id="focus-switch" checked={focus} onCheckedChange={setFocus}/></div>
+-        <div className="setting-row"><label htmlFor="original-switch">Show original painting</label><Switch id="original-switch" checked={original} onCheckedChange={value=>{setOriginal(value);if(value)setNeuromancer(false);}}/></div>
+-        <div className="setting-row neuromancer-setting">
+-          <label htmlFor="neuromancer-checkbox">Neuromancer mode</label>
+-          <Checkbox.Root id="neuromancer-checkbox" className="mode-checkbox" checked={neuromancer} onCheckedChange={value=>{setNeuromancer(value);if(value)setOriginal(false);}}>
+-            <Checkbox.Indicator className="mode-check"><Check size={15} aria-hidden="true"/></Checkbox.Indicator>
+-          </Checkbox.Root>
+-        </div>
+-        <div className="art-credit">Public-domain artwork. Supplied reproduction.<br/>The painted figure is preserved. The landscape is extended for this immersive presentation.</div>
+-      </DialogContent></Dialog>
+-    </footer>
+-  </main>;
++  return <main className="sanctuary"><Artwork motion={motion} original={false} depth={75} focus={true} cloudSpeed={3} neuromancer={false} signalMotion={false}/></main>;
+ }

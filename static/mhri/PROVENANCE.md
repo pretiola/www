@@ -14,3 +14,10 @@ The parent page provides an original-painting fallback and descriptive link
 without JavaScript. The interactive scene is isolated in a same-origin iframe.
 
 The built MHRI home link is redirected to /static/mhri/index.html to avoid nesting the Pretiola homepage inside the frame.
+
+## Artwork-only integration
+The upstream page.tsx is replaced with a minimal Artwork component wrapper.
+It preserves pointer/touch/keyboard depth, cloud drift and fabric motion,
+respects reduced motion, and removes all branding, dialogs, controls and
+localStorage preferences. Parent CSS supplies the responsive arched frame.
+The exact source changes are retained in scripts/mhri-embed.patch.

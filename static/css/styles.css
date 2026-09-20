@@ -211,7 +211,11 @@ code { font-size:.9em; overflow-wrap:anywhere; }
 .foundation-goals { margin-top:2.5rem; padding-top:1rem; border-top:1px solid var(--line); }
 .foundation-goals p { color:var(--muted); }
 
-.mhri-frame { width:100%; height:540px; overflow:hidden; border:1px solid var(--line); background:#302d27; }
-.mhri-frame > img { width:100%; height:100%; object-fit:contain; }
-.mhri-frame iframe { display:block; width:100%; height:100%; border:0; }
-@media(max-width:480px){ .mhri-frame{height:440px} }
+/* The artwork gets its own responsive viewport inside the original arch. */
+.hero-art { min-width:0; }
+.mhri-frame { width:100%; }
+.mhri-window { position:relative; width:100%; aspect-ratio:4 / 5; min-height:320px; overflow:hidden; border-radius:48% 48% 0 0; background:#302d27; }
+.mhri-window > img,.mhri-window iframe { position:absolute; inset:0; display:block; width:100%; height:100%; border:0; }
+.mhri-window > img { object-fit:cover; filter:none; }
+@media(max-width:800px){ .hero-art{max-width:none;width:100%;padding:0} .mhri-window{aspect-ratio:1 / 1;max-height:620px} }
+@media(max-width:480px){ .mhri-window{aspect-ratio:4 / 5;min-height:320px} }

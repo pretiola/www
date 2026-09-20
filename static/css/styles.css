@@ -248,3 +248,14 @@ code { font-size:.9em; overflow-wrap:anywhere; }
  .mobile-navigation:not([open]) .nav-links { display:none; }
  .mobile-navigation .nav-links a { padding:.65rem .8rem; }
 }
+
+/* Give the immersive scene the full page width in the stacked hero. */
+@media(max-width:800px){
+ .hero-art { width:calc(100% + 56px); max-width:none; margin-inline:-28px; }
+ .hero-art .mhri-frame { padding:0; border:0; border-radius:0; }
+ .hero-art .mhri-frame::after { display:none; }
+ .hero-art .mhri-window,.hero-art .mhri-window > img { border-radius:0; }
+ .hero-art figcaption { padding-inline:1rem; }
+}
+
+@media(max-width:480px){ .hero-art{width:calc(100% + 36px);margin-inline:-18px} }

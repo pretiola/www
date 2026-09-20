@@ -215,7 +215,7 @@ index ddd7849..0f07b3f 100644
  
  :root { --font-wordmark: 'Almendra'; --font-cormorant: 'Cormorant Garamond'; --font-inter: 'Inter'; }
 diff --git a/src/globals.css b/src/globals.css
-index 7bf7d29..f7e0ef0 100644
+index 7bf7d29..3f9a72e 100644
 --- a/src/globals.css
 +++ b/src/globals.css
 @@ -6,9 +6,9 @@
@@ -231,13 +231,15 @@ index 7bf7d29..f7e0ef0 100644
  .art-frame{position:absolute;left:50%;top:48%;margin:0;height:calc(100% - 54px);width:auto;aspect-ratio:798/1260;max-width:calc(100vw - 34px);transform:translate(-50%,-50%) translate3d(calc(var(--px)*5px),calc(var(--py)*3px),0) rotateY(calc(var(--px)*.65deg)) rotateX(calc(var(--py)*-.35deg));transform-origin:50% 86%;will-change:transform;}
  .scene-window{position:relative;width:100%;height:100%;}.painting{width:100%;height:100%;object-fit:contain;display:block;}.original-painting{opacity:0;pointer-events:none;}.depth-scene{position:absolute;inset:0;width:100%;height:100%;display:block;overflow:visible;}.figure-detail{filter:none}.figure-mesh{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0;}.mesh-ready .figure-mesh{opacity:1}.mesh-ready .figure-detail{visibility:hidden}.is-original .figure-mesh{display:none}.is-original .original-painting{opacity:1}.is-original .depth-scene{display:none}.is-original .art-frame{transform:translate(-50%,-50%)}
  .halo-aureole{position:absolute;left:54.5%;top:11.8%;width:42%;aspect-ratio:1;border-radius:50%;pointer-events:none;background:radial-gradient(circle closest-side,rgba(255,218,126,.62) 0%,rgba(249,202,98,.49) 22%,rgba(234,176,62,.31) 44%,rgba(221,159,41,.14) 64%,rgba(211,148,36,.035) 82%,rgba(211,148,36,0) 100%);mix-blend-mode:screen;transform:translate(-50%,-50%) translate3d(calc(var(--px)*-5px),calc(var(--py)*-2.5px),0);will-change:transform;}.is-original .halo-aureole{display:none}.halo-detail{mix-blend-mode:screen}
-@@ -45,3 +45,6 @@
+@@ -45,3 +45,8 @@
  @keyframes projection-scan{from{transform:translateY(-25%)}to{transform:translateY(25%)}}
  @keyframes projection-grain{0%,100%{transform:translate(0,0)}23%{transform:translate(-1%,1%)}49%{transform:translate(1%,-1%)}72%{transform:translate(-1%,-1%)}}
  @media(prefers-reduced-motion:reduce){.signal-sweep,.signal-noise{animation:none!important;}}
 +
 +/* Mobile clouds follow page scroll exactly, independently of the figure idle drift. */
 +.is-scroll-driven .cloud-sky{transform:translate3d(var(--cloud-x),var(--cloud-y),0) scale(1.10);}
++
++.is-scroll-driven .landscape-space{transform:scale(1.015);}
 diff --git a/src/page.tsx b/src/page.tsx
 index da8c7b9..bac1432 100644
 --- a/src/page.tsx

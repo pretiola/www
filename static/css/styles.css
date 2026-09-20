@@ -260,8 +260,6 @@ code { font-size:.9em; overflow-wrap:anywhere; }
 
 @media(max-width:480px){ .hero-art{width:calc(100% + 36px);margin-inline:-18px} }
 
-/* Let swipes over the animated painting scroll the outer page on touch/narrow screens. */
-@media(max-width:800px),(hover:none),(pointer:coarse){
- .mhri-window iframe { pointer-events:none; }
- .mhri-window { touch-action:pan-y pinch-zoom; }
-}
+/* The frame never receives gestures; desktop mouse hover is forwarded by the parent. */
+.mhri-window iframe { pointer-events:none; }
+.mhri-window { touch-action:auto; }

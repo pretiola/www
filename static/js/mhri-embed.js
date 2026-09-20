@@ -1,19 +1,23 @@
-// Progressive enhancement: the painting and its link remain available without JS.
+// Keep the iframe visual-only: all scrolling and focus stay in the parent page.
 const painting = document.getElementById('mhri-artwork');
 if (painting) {
   const frame = document.createElement('iframe');
-  frame.title = 'The Good Shepherd — interactive MHRI painting';
-  frame.src = '/static/mhri/index.html';
-  frame.setAttribute('allow', 'fullscreen');
-  // Touch gestures belong to page scrolling; animation continues inside the frame.
+  frame.title = 'The Good Shepherd — animated MHRI painting';
+  frame.src = '/static/mhri/index.html?v=20260920-scroll';
+  frame.tabIndex = -1;
+  frame.setAttribute('inert', '');
   const mouseInteraction = window.matchMedia('(min-width: 801px) and (hover: hover) and (pointer: fine)');
-  const updateInteraction = () => {
-    frame.tabIndex = mouseInteraction.matches ? 0 : -1;
-    frame.title = mouseInteraction.matches
-      ? 'The Good Shepherd — interactive MHRI painting'
-      : 'The Good Shepherd — animated MHRI painting';
+  const sendHover = (active, x = 0, y = 0) => {
+    frame.contentWindow?.postMessage({type: 'pretiola-art-hover', active, x, y}, window.location.origin);
   };
-  updateInteraction();
-  mouseInteraction.addEventListener('change', updateInteraction);
+  painting.addEventListener('pointermove', event => {
+    if (!mouseInteraction.matches || event.pointerType !== 'mouse' || event.buttons !== 0) return;
+    const rect = painting.getBoundingClientRect();
+    sendHover(true, (event.clientX - rect.left) / rect.width * 2 - 1,
+      (event.clientY - rect.top) / rect.height * 2 - 1);
+  }, {passive: true});
+  painting.addEventListener('pointerleave', () => sendHover(false), {passive: true});
+  painting.addEventListener('pointerdown', () => sendHover(false), {passive: true});
+  mouseInteraction.addEventListener('change', () => sendHover(false));
   painting.replaceChildren(frame);
 }

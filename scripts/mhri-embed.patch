@@ -12,12 +12,45 @@ index dfaae24..b7bd38b 100644
    </body>
  </html>
 diff --git a/src/artwork.tsx b/src/artwork.tsx
-index c2fb37f..6bb9e7f 100644
+index c2fb37f..7cc15f6 100644
 --- a/src/artwork.tsx
 +++ b/src/artwork.tsx
-@@ -64,22 +64,22 @@ export function Artwork({ motion, original, depth, focus, cloudSpeed, neuromance
-     onPointerLeave={()=>{target.current.active=false;target.current.last=performance.now();}}
-     onKeyDown={e=>{const directions:Record<string,[number,number]>={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]};const dir=directions[e.key];if(dir&&motion&&!original){e.preventDefault();target.current={x:dir[0],y:dir[1],last:performance.now(),active:false};}}}>
+@@ -49,37 +49,41 @@ export function Artwork({ motion, original, depth, focus, cloudSpeed, neuromance
+     start();document.addEventListener('visibilitychange',visibility);
+     return()=>{cancelAnimationFrame(raf);document.removeEventListener('visibilitychange',visibility);set(0,0);clouds(0);};
+   },[motion,original,depth]);
+-  function point(e:React.PointerEvent<HTMLDivElement>){
+-    if(!motion||original)return;
+-    if(e.pointerType==='touch'&&!target.current.active)return;
+-    const r=e.currentTarget.getBoundingClientRect();
+-    target.current.x=Math.max(-1,Math.min(1,(e.clientX-r.left)/r.width*2-1));
+-    target.current.y=Math.max(-1,Math.min(1,(e.clientY-r.top)/r.height*2-1));
+-    target.current.last=performance.now();
+-  }
+-  return <div ref={root} className={`art-interaction ${original?'is-original':''} ${focus&&!original?'has-focus':''} ${neuromancer&&!original?'is-neuromancer':''} ${signalMotion?'has-signal-motion':''}`} tabIndex={0} role="region" aria-label="The Good Shepherd interactive artwork. Move your pointer, drag with a finger, or use the arrow keys to explore depth."
+-    onPointerDown={e=>{if(!motion||original)return;target.current.active=true;e.currentTarget.setPointerCapture(e.pointerId);point(e);}}
+-    onPointerMove={point} onPointerUp={e=>{target.current.active=false;target.current.last=performance.now();if(e.currentTarget.hasPointerCapture(e.pointerId))e.currentTarget.releasePointerCapture(e.pointerId);}}
+-    onPointerCancel={()=>{target.current.active=false;target.current.last=performance.now();}}
+-    onPointerLeave={()=>{target.current.active=false;target.current.last=performance.now();}}
+-    onKeyDown={e=>{const directions:Record<string,[number,number]>={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]};const dir=directions[e.key];if(dir&&motion&&!original){e.preventDefault();target.current={x:dir[0],y:dir[1],last:performance.now(),active:false};}}}>
++  // The embedding page owns input so the iframe never captures scrolling or focus.
++  useEffect(() => {
++    const receive = (event: MessageEvent) => {
++      if (event.source !== window.parent || event.origin !== window.location.origin) return;
++      const data = event.data;
++      if (data?.type !== 'pretiola-art-hover') return;
++      if (!motion || original) return;
++      if (data.active && Number.isFinite(data.x) && Number.isFinite(data.y)) {
++        target.current = {x: Math.max(-1, Math.min(1, data.x)), y: Math.max(-1, Math.min(1, data.y)), last: performance.now(), active: true};
++      } else {
++        target.current.active = false;
++        target.current.last = performance.now();
++      }
++    };
++    window.addEventListener('message', receive);
++    return () => window.removeEventListener('message', receive);
++  }, [motion, original]);
++  return <div ref={root} className={`art-interaction ${original?'is-original':''} ${focus&&!original?'has-focus':''} ${neuromancer&&!original?'is-neuromancer':''} ${signalMotion?'has-signal-motion':''}`} role="region" aria-label="The Good Shepherd animated artwork.">
      <div className="landscape-space" aria-hidden="true">
 -      <img className="cloud-sky" src="/art/cloud-sky.png" alt="" draggable="false"/>
 -      <img ref={environment} className="landscape-image landscape-foreground" src="/art/landscape-wide.png" alt="" draggable="false"/>
@@ -154,15 +187,17 @@ index ddd7849..0f07b3f 100644
  
  :root { --font-wordmark: 'Almendra'; --font-cormorant: 'Cormorant Garamond'; --font-inter: 'Inter'; }
 diff --git a/src/globals.css b/src/globals.css
-index 7bf7d29..221e41c 100644
+index 7bf7d29..9c44d6b 100644
 --- a/src/globals.css
 +++ b/src/globals.css
-@@ -7,8 +7,8 @@
+@@ -6,9 +6,9 @@
+ :root,.dark{--background:#202922;--foreground:#eee5cf;--primary:#c8ab6b;--primary-foreground:#111715;--popover:#1b2420;--muted:#343d33;--muted-foreground:#bbbead;--input:#4c5144;--border:#bda16340;--ring:#d2b776;--accent:#343d33;}
  *{box-sizing:border-box}html,body{margin:0;width:100%;min-height:100%;background:var(--background);color:var(--foreground)}body{font-family:var(--font-inter),Arial,sans-serif}button,a,input{-webkit-tap-highlight-color:transparent}button{font:inherit;color:inherit;cursor:pointer}button,a{touch-action:manipulation}button:focus-visible,a:focus-visible{outline:2px solid #efd79f;outline-offset:6px}a{color:inherit}::selection{background:#b18a48;color:#111715}
  .sanctuary{position:relative;isolation:isolate;height:100svh;height:100dvh;min-height:320px;overflow:hidden;background:#313b33;}
- .art-interaction{position:absolute;inset:0;--px:0;--py:0;--cloud-x:0px;--cloud-y:0px;touch-action:pinch-zoom;perspective:1500px;}.art-interaction:focus-visible{outline:1px solid #c5a46199;outline-offset:-10px}
+-.art-interaction{position:absolute;inset:0;--px:0;--py:0;--cloud-x:0px;--cloud-y:0px;touch-action:pinch-zoom;perspective:1500px;}.art-interaction:focus-visible{outline:1px solid #c5a46199;outline-offset:-10px}
 -.landscape-space{position:absolute;inset:-20px;transform:translate3d(calc(var(--px)*-9px),calc(var(--py)*-6px),0) scale(1.015);will-change:transform;}.landscape-image,.cloud-sky{position:absolute;inset:0;height:100%;width:100%;object-fit:cover;object-position:50% 50%;display:block;}.cloud-sky{transform:translate3d(calc(var(--cloud-x) + var(--px)*-2px),calc(var(--cloud-y) + var(--py)*-1px),0) scale(1.10);will-change:transform;}.landscape-foreground{mask-image:url('/art/landscape-foreground-mask.svg');mask-size:cover;mask-position:center;mask-repeat:no-repeat;}.is-original .landscape-foreground{mask-image:none}.figure-shadow{position:absolute;mix-blend-mode:multiply;pointer-events:none;}.is-original .figure-shadow{display:none}.has-focus .landscape-space{filter:blur(.8px)}
 -.near-landscape{position:absolute;inset:-20px;background:url('/art/landscape-wide.png') center/cover no-repeat;mask-image:linear-gradient(to bottom,transparent 79%,#000 98%);transform:translate3d(calc(var(--px)*5px),calc(var(--py)*3px),0) scale(1.015);pointer-events:none;will-change:transform;}.has-focus .near-landscape{filter:blur(.35px)}
++.art-interaction{position:absolute;inset:0;--px:0;--py:0;--cloud-x:0px;--cloud-y:0px;touch-action:auto;perspective:1500px;}.art-interaction:focus-visible{outline:1px solid #c5a46199;outline-offset:-10px}
 +.landscape-space{position:absolute;inset:-20px;transform:translate3d(calc(var(--px)*-9px),calc(var(--py)*-6px),0) scale(1.015);will-change:transform;}.landscape-image,.cloud-sky{position:absolute;inset:0;height:100%;width:100%;object-fit:cover;object-position:50% 50%;display:block;}.cloud-sky{transform:translate3d(calc(var(--cloud-x) + var(--px)*-2px),calc(var(--cloud-y) + var(--py)*-1px),0) scale(1.10);will-change:transform;}.landscape-foreground{mask-image:url('/static/mhri/art/landscape-foreground-mask.svg');mask-size:cover;mask-position:center;mask-repeat:no-repeat;}.is-original .landscape-foreground{mask-image:none}.figure-shadow{position:absolute;mix-blend-mode:multiply;pointer-events:none;}.is-original .figure-shadow{display:none}.has-focus .landscape-space{filter:blur(.8px)}
 +.near-landscape{position:absolute;inset:-20px;background:url('/static/mhri/art/landscape-wide.png') center/cover no-repeat;mask-image:linear-gradient(to bottom,transparent 79%,#000 98%);transform:translate3d(calc(var(--px)*5px),calc(var(--py)*3px),0) scale(1.015);pointer-events:none;will-change:transform;}.has-focus .near-landscape{filter:blur(.35px)}
  .art-frame{position:absolute;left:50%;top:48%;margin:0;height:calc(100% - 54px);width:auto;aspect-ratio:798/1260;max-width:calc(100vw - 34px);transform:translate(-50%,-50%) translate3d(calc(var(--px)*5px),calc(var(--py)*3px),0) rotateY(calc(var(--px)*.65deg)) rotateX(calc(var(--py)*-.35deg));transform-origin:50% 86%;will-change:transform;}

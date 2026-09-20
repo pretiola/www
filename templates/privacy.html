@@ -3,7 +3,7 @@
 {% block content %}
 <section class="wrap page-intro narrow"><h1>Privacy Policy</h1><p class="lede">Last updated: 20 September 2026</p></section>
 <article class="wrap narrow policy-content">
-{% if local_preview %}<p class="review-note"><strong>Draft for local review.</strong> This preview stores test submissions locally and does not send email. Operator details, production service providers and backup retention remain subject to confirmation before publication.</p>{% endif %}
+{% if local_preview %}<p class="review-note"><strong>Draft for local review.</strong> This preview stores test submissions locally and may deliver them through Telegram when the operator enables delivery. Operator details, production service providers and backup retention remain subject to confirmation before publication.</p>{% endif %}
 <h2>About this policy</h2>
 <p>This Privacy Policy explains how the Pretiola Initiative (“Pretiola”, “we”, “us”) collects and uses personal information through this website and its inquiry forms. For privacy questions or requests, contact <a href="mailto:contact@pretiola.org">contact@pretiola.org</a>.</p>
 <h2>Information we collect</h2>
@@ -13,14 +13,14 @@
 <h2>How we use information</h2>
 <p>We use your information to review and respond to inquiries, discuss potential contributions or ministry support, maintain records of those conversations, and protect the website against spam and misuse. We do not use inquiry information for advertising or sell it to third parties.</p>
 <h2>Access and service providers</h2>
-<p>Inquiry records are stored by the Pretiola application and are available through restricted administrative access. Access is intended for people responsible for reviewing and handling inquiries. Our production hosting configuration uses Fly.io and persistent database storage. Hosting, email and backup providers may process information as necessary to supply their services.</p>
-<p>Email notifications contain an inquiry reference and category rather than the submitted contact details or message. We may disclose information where required by applicable law or where necessary to address unlawful activity or protect legal rights.</p>
+<p>Inquiry records are stored by the Pretiola application and are available through restricted administrative access. Access is intended for people responsible for reviewing and handling inquiries. Our production hosting configuration uses Fly.io and persistent database storage. Hosting, messaging, email and backup providers may process information as necessary to supply their services.</p>
+<p>When Telegram delivery is enabled, submitted contact details, messages and other inquiry fields are sent through Telegram to designated reviewers. Email notifications, when used instead, contain only an inquiry reference and category. We may disclose information where required by applicable law or where necessary to address unlawful activity or protect legal rights.</p>
 {% if local_preview %}<p class="review-note">Publication checklist: identify the responsible legal operator and contact address; confirm service providers, processing locations, any international-transfer safeguards, and applicable legal bases for processing. These details have not yet been finalized.</p>{% endif %}
 <h2>Cookies and analytics</h2>
 <p>The website uses an essential cookie named <code>pretiola_form</code> to protect form submissions. It expires after up to 24 hours and is not used for advertising. If you disable cookies, you can contact us by email instead of submitting a form.</p>
 <p>We use temporarily processed network addresses and keyed hashes of network and email addresses to limit repeated submissions. Raw network addresses are not stored in inquiry records. The website does not currently use analytics or advertising trackers.</p>
 <h2>Data retention</h2>
-<p>Inquiry records and associated notification jobs are automatically removed from the application after 90 days. Separate records created for an agreed engagement are outside this inquiry process and require their own retention arrangements.</p>
+<p>Inquiry records and associated notification jobs are automatically removed from the application after 90 days. This automatic deletion does not remove copies delivered to Telegram; those copies require separate deletion by the responsible reviewers. Separate records created for an agreed engagement are outside this inquiry process and require their own retention arrangements.</p>
 <p>Deleted information may remain in backups until those backups expire. If a backup is restored, previously approved deletion requests must be reapplied.</p>
 {% if local_preview %}<p class="review-note">Backup retention and the process for handling deletion requests must be confirmed before launch.</p>{% endif %}
 <h2>Security</h2>

@@ -14,11 +14,29 @@ npm run build:favicon
 PORT=8091 cargo run
 ```
 
-Open http://localhost:8091/. Restart after Rust or template edits (Tera loads templates at startup); rebuild CSS after styling changes. Local review pages are marked noindex and show a draft notice. Use fictional details only. The default mail mode is `capture`, which does not send email. No production secrets are needed.
+Open http://localhost:8091/. Restart after Rust or template edits (Tera loads templates at startup); rebuild CSS after styling changes. Local review pages are marked noindex and show a draft notice. Use fictional details only. The default notification mode is `capture`, which does not send messages. No production secrets are needed.
 
-SQLite saves local inquiries in ignored `private/intake.sqlite3`. The worker captures notification jobs, retries real delivery only when SMTP is explicitly configured, and expires inquiry records after 90 days. Capture is not proof of real mail delivery.
+SQLite saves local inquiries in ignored `private/intake.sqlite3`. The worker captures notification jobs, retries real delivery when Telegram or SMTP is explicitly configured, and expires inquiry records after 90 days. Capture is not proof of real delivery.
 
 For a containerized local preview, `docker compose up --build` uses a named development volume. Do not use `docker compose down -v` unless intentionally deleting its local test database.
+
+## Telegram leads (local setup)
+
+Copy `.env.example` to `.env` if it does not already exist. The local `.env` is ignored by Git and excluded from Docker builds. Set:
+
+```dotenv
+NOTIFICATION_MODE=telegram
+TELEGRAM_BOT_TOKEN=your-bot-token
+TELEGRAM_USER_IDS=123456789,987654321
+```
+
+Only one bot token is needed. IDs are positive numeric Telegram user IDs, comma-separated (up to ten recipients), not usernames. Each recipient must open this bot and send `/start` before it can message them. Restart the server from the repository directory after editing `.env`; exported shell variables take precedence over the file. Never paste credentials into chat or commit them.
+
+Submit a fresh fictional inquiry through either form and wait up to 30 seconds. Check that Telegram receives the name, contact information, message and other supplied fields, and that its reference matches the confirmation page. Run `python3 scripts/inquiries.py status` to confirm the outbox reports `sent`. Existing `captured` jobs are not resent when changing modes.
+
+SQLite saves the inquiry before confirming success; Telegram is delivery, not the only record. Existing spam limits still apply. Long messages are split. Failed deliveries retry with backoff, up to eight attempts; successful recipient/part receipts prevent ordinary retry duplicates. A crash after Telegram accepts a message but before its receipt is saved can still cause a duplicate. `sent` means Telegram accepted every part for every recipient, not that a person read it. After fixing a failure, use `python3 scripts/inquiries.py retry INQUIRY_ID`. Telegram copies are not removed by the application's 90-day database expiry.
+
+Use `NOTIFICATION_MODE=capture` for tests that must not contact anyone. `MAIL_MODE` remains a legacy fallback only when `NOTIFICATION_MODE` is absent.
 
 ## Test
 
@@ -37,7 +55,7 @@ Tests cover routing, storage/notification atomicity, restart persistence, duplic
 - `src/routes.rs`: explicit public pages and sitemap. Adding a template does not make it public.
 - `src/forms.rs`: native forms, cookie-bound tokens, validation/error rendering and receipt redirects.
 - `src/inquiries.rs`: schema v1, durable records, duplicate protection and quotas.
-- `src/notifications.rs`: local capture / STARTTLS SMTP adapter, retry queue and expiry.
+- `src/notifications.rs`: local capture / Telegram / STARTTLS SMTP adapters, retry queue and expiry.
 - `templates/`: shared layout, homepage, contributor/ministry forms, policies and receipts.
 - `static/css/styles.css`: Tailwind source and responsive visual system; rebuild tracked `tailwind.css`.
 - `scripts/inquiries.py`: restricted inquiry status, retrieval, stage updates, backup, deletion and failed-notification retry.
@@ -48,7 +66,7 @@ No public administration interface or inquiry export endpoint is exposed. Privat
 
 Keep changes on `refinement-local` until user sign-off; do not push or deploy without authorization. The proposed CI runs checks on pushes/PRs; deployment requires explicit manual dispatch from main and the `production` environment. The existing remote workflow is unchanged until these local commits are approved and pushed.
 
-Fly's root filesystem is ephemeral. The candidate deployment requires a separately provisioned Fly Volume mounted at `/data`, exactly one writer, independently stored backups and restore verification. The app refuses production startup without the real mount, expected database path and explicit storage confirmation. SMTP credentials and a confirmed recipient are also required. A mounted volume is not replication or protection against all hardware failure.
+Fly's root filesystem is ephemeral. The candidate deployment requires a separately provisioned Fly Volume mounted at `/data`, exactly one writer, independently stored backups and restore verification. The app refuses production startup without the real mount, expected database path and explicit storage confirmation. Telegram or SMTP credentials and confirmed recipients are also required. A mounted volume is not replication or protection against all hardware failure.
 
 Read [operations and release gates](docs/operations.md) before any infrastructure or deployment work. Live Fly volumes, live email delivery and production restore have not been verified locally. If multi-machine availability is required, move to a shared database before scaling.
 

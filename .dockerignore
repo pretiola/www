@@ -4,3 +4,6 @@ private
 target
 node_modules
 *.sqlite3*
+
+.env.*
+!.env.example

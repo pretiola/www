@@ -1,5 +1,11 @@
 const menu = document.querySelector('.mobile-navigation');
 if (menu) {
+  const toggle = menu.querySelector('summary');
+  // Handle one toggle per activation; retain native disclosure when JS is absent.
+  toggle.addEventListener('click', event => {
+    event.preventDefault();
+    menu.open = !menu.open;
+  });
   menu.addEventListener('click', event => {
     if (event.target.closest('a')) menu.open = false;
   });

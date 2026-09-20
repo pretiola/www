@@ -222,7 +222,7 @@ code { font-size:.9em; overflow-wrap:anywhere; }
 
 .foundation-goals-layout { display:grid; grid-template-columns:1.15fr 1fr; gap:2rem; align-items:start; }
 .piglet-figure { padding:0; border:0; background:transparent; }
-.piglet-figure img { width:100%; height:auto; filter:grayscale(1) brightness(1.15); mix-blend-mode:multiply; }
+.piglet-figure img { width:100%; height:auto;  }
 .piglet-figure figcaption { padding:.75rem .25rem .25rem; font-size:.8rem; font-style:italic; color:var(--muted); line-height:1.5; }
 .founder-links { flex-wrap:wrap; gap:.75rem; }
 .founder-links a { display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border:0; color:var(--wine); }
@@ -259,3 +259,9 @@ code { font-size:.9em; overflow-wrap:anywhere; }
 }
 
 @media(max-width:480px){ .hero-art{width:calc(100% + 36px);margin-inline:-18px} }
+
+/* Let swipes over the animated painting scroll the outer page on touch/narrow screens. */
+@media(max-width:800px),(hover:none),(pointer:coarse){
+ .mhri-window iframe { pointer-events:none; }
+ .mhri-window { touch-action:pan-y pinch-zoom; }
+}

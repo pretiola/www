@@ -181,7 +181,7 @@ code { font-size:.9em; overflow-wrap:anywhere; }
 .wordmark,.footer-wordmark { font-family:'Cinzel Decorative',Georgia,serif; letter-spacing:.05em; }
 .wordmark { color:#6B1D1D; }
 .brand-pretzel { font-family:Arial,sans-serif; letter-spacing:normal; }
-.wordmark-sub { letter-spacing:.17em; }
+.wordmark-sub { letter-spacing:.17em; text-align:center; }
 .button,.nav-links .nav-contribute { background:#956B08; border:2px solid #956B08; color:#fff; font-weight:700; box-shadow:0 3px 0 #805D08; }
 .button:hover,.nav-links .nav-contribute:hover { background:#805D08; border-color:#805D08; color:#fff; }
 .nav-links .nav-contribute { padding:.8rem 1.4rem; }

@@ -1,15 +1,38 @@
 {% extends "base.html" %}
-{% block title %}Privacy | Pretiola{% endblock title %}
+{% block title %}Privacy Policy | Pretiola{% endblock title %}
 {% block content %}
-<section class="wrap page-intro narrow"><p class="eyebrow">Privacy &amp; care</p><h1>The details you share<br><em>deserve care.</em></h1><p class="lede">This notice describes the website’s inquiry process. Please share only what is needed for a first conversation.</p></section>
+<section class="wrap page-intro narrow"><h1>Privacy Policy</h1><p class="lede">Last updated: 20 September 2026</p></section>
 <article class="wrap narrow policy-content">
-{% if local_preview %}<div class="availability-note"><strong>Draft for local review.</strong> These forms currently save test inquiries on this computer and do not send email. Production hosting, authorized readers and the independent backup service must be confirmed before release.</div>{% endif %}
-<h2>Who to contact</h2><p>The website introduces the Pretiola Initiative. For questions about an inquiry or your information, contact <a href="mailto:contact@pretiola.org">contact@pretiola.org</a>.</p>
-<h2>What the inquiry forms collect</h2><p>Both forms ask for your name, reply email, message and permission to reply. Ministry inquiries also ask for an organization and country. Contributor introductions ask for a preferred contribution mode, with optional availability, time zone and interests. A referral is optional.</p><p>Please do not include identity documents, passwords, payment details, medical information or sensitive information about other people. We do not need those details to discuss an initial inquiry.</p>
-<h2>What happens when you submit</h2><p>The form sends your information to the Pretiola application, which validates and saves the inquiry before confirming receipt. The revised form does not send submissions to Web3Forms.</p><p>In the production configuration, the application uses Fly.io hosting and a persistent database volume. A notification tells the designated recipient that an inquiry is available; the notification contains a reference and inquiry type, not your submitted contact details or message. Authorized operators retrieve the record through restricted administrative access.</p><p>We use inquiry information to assess the request, reply and record its progress. An inquiry does not guarantee a placement, engagement or response time.</p>
-<h2>Essential form cookie and abuse prevention</h2><p>A cookie called <code>pretiola_form</code> helps confirm that a submission came from the form you opened. It lasts up to 24 hours and is used for form security, not advertising. Cookies must be enabled to submit; you can email us instead.</p><p>The application uses your network address temporarily to limit repeated requests. Saved rate-limit keys use keyed hashes of network addresses and email addresses; the application does not save raw network addresses in inquiry records. Hosting infrastructure may separately process connection information.</p>
-<h2>Retention and deletion</h2><p>The application removes inquiry records and their notification jobs after 90 days. If we agree to work together, any separate engagement records and their retention need to be explained separately.</p><p>You can ask us to locate, correct or delete an inquiry using your reply address or inquiry reference. We may need to confirm that the request comes from the person concerned. Backups can retain a copy until their retention period ends; deletion requests must also be respected if a backup is restored.</p>
-{% if local_preview %}<p class="review-note">Before publication: confirm the responsible operator, authorized readers, mail provider, backup location and retention, hosting log practices, and any required jurisdiction-specific disclosures. The application’s 90-day default is implemented; this draft does not establish that the production operational arrangements are complete.</p>{% endif %}
-<h2>Analytics and external links</h2><p>This revised website does not load Google Analytics, advertising tags or external font services. Ordinary links to other websites are governed by those sites’ own privacy practices when you choose to visit them.</p><h2>Changes</h2><p>This notice should be updated when the actual inquiry process changes. Questions can be sent to <a href="mailto:contact@pretiola.org">contact@pretiola.org</a>.</p>
+{% if local_preview %}<p class="review-note"><strong>Draft for local review.</strong> This preview stores test submissions locally and does not send email. Operator details, production service providers and backup retention remain subject to confirmation before publication.</p>{% endif %}
+<h2>About this policy</h2>
+<p>This Privacy Policy explains how the Pretiola Initiative (“Pretiola”, “we”, “us”) collects and uses personal information through this website and its inquiry forms. For privacy questions or requests, contact <a href="mailto:contact@pretiola.org">contact@pretiola.org</a>.</p>
+<h2>Information we collect</h2>
+<p>When you submit an inquiry, we collect your name, email address, message and consent to be contacted. Contributor inquiries also include your selected contribution category and any availability, time zone, interests or referral information you choose to provide. Ministry inquiries include the organization name and country.</p>
+<p>We also process limited technical information to operate and protect the forms, including a security cookie and information used to detect repeated submissions. Hosting services may process connection information, including IP addresses, in their own operational logs.</p>
+<p>Do not submit passwords, payment details, identity documents, health information or confidential information about other people. Only provide information you are authorized to share.</p>
+<h2>How we use information</h2>
+<p>We use your information to review and respond to inquiries, discuss potential contributions or ministry support, maintain records of those conversations, and protect the website against spam and misuse. We do not use inquiry information for advertising or sell it to third parties.</p>
+<h2>Access and service providers</h2>
+<p>Inquiry records are stored by the Pretiola application and are available through restricted administrative access. Access is intended for people responsible for reviewing and handling inquiries. Our production hosting configuration uses Fly.io and persistent database storage. Hosting, email and backup providers may process information as necessary to supply their services.</p>
+<p>Email notifications contain an inquiry reference and category rather than the submitted contact details or message. We may disclose information where required by applicable law or where necessary to address unlawful activity or protect legal rights.</p>
+{% if local_preview %}<p class="review-note">Publication checklist: identify the responsible legal operator and contact address; confirm service providers, processing locations, any international-transfer safeguards, and applicable legal bases for processing. These details have not yet been finalized.</p>{% endif %}
+<h2>Cookies and analytics</h2>
+<p>The website uses an essential cookie named <code>pretiola_form</code> to protect form submissions. It expires after up to 24 hours and is not used for advertising. If you disable cookies, you can contact us by email instead of submitting a form.</p>
+<p>We use temporarily processed network addresses and keyed hashes of network and email addresses to limit repeated submissions. Raw network addresses are not stored in inquiry records. The website does not currently use analytics or advertising trackers.</p>
+<h2>Data retention</h2>
+<p>Inquiry records and associated notification jobs are automatically removed from the application after 90 days. Separate records created for an agreed engagement are outside this inquiry process and require their own retention arrangements.</p>
+<p>Deleted information may remain in backups until those backups expire. If a backup is restored, previously approved deletion requests must be reapplied.</p>
+{% if local_preview %}<p class="review-note">Backup retention and the process for handling deletion requests must be confirmed before launch.</p>{% endif %}
+<h2>Security</h2>
+<p>We use access restrictions, submission validation and abuse controls to protect inquiry information. No system or method of transmission is completely secure, and we cannot guarantee absolute security.</p>
+<h2>Your rights and requests</h2>
+<p>You may contact us to request access to, correction of, or deletion of your inquiry information, or to ask us to stop contacting you. Include your inquiry reference or the email address used for the inquiry. We may need to verify your identity before acting on a request.</p>
+<p>Depending on applicable law, you may also have rights to restrict or object to processing, receive a portable copy of information, withdraw consent where processing relies on consent, or complain to the relevant data protection authority. These rights may be subject to legal conditions and exceptions.</p>
+<h2>Third-party websites</h2>
+<p>Links to external websites are provided for convenience. This policy does not apply to those websites. Review their privacy policies before providing personal information.</p>
+<h2>Changes to this policy</h2>
+<p>We may update this policy to reflect changes to the website or our information-handling practices. The revised policy will be published on this page with an updated date.</p>
+<h2>Contact</h2>
+<p>For questions about this policy or your personal information, email <a href="mailto:contact@pretiola.org">contact@pretiola.org</a>.</p>
 </article>
 {% endblock content %}

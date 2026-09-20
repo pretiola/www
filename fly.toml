@@ -1,4 +1,4 @@
-# Candidate production configuration: do not deploy before docs/operations.md gates pass.
+# Production: one SQLite writer on the verified intake_data volume.
 app = 'pretiola-website'
 primary_region = 'yyz'
 
@@ -8,9 +8,9 @@ primary_region = 'yyz'
   APP_ENV = 'production'
   PUBLIC_ORIGIN = 'https://pretiola.org'
   INTAKE_DB = '/data/pretiola/intake.sqlite3'
-  MAIL_MODE = 'smtp'
+  NOTIFICATION_MODE = 'telegram'
   TRUST_FLY_PROXY = 'true'
-  # PERSISTENT_STORAGE_CONFIRMED must be set only after mount/restore verification.
+  PERSISTENT_STORAGE_CONFIRMED = 'true'
 
 [[mounts]]
   source = 'intake_data'
@@ -24,6 +24,13 @@ primary_region = 'yyz'
   auto_start_machines = true
   min_machines_running = 1
   processes = ['app']
+
+[[http_service.checks]]
+  interval = '30s'
+  timeout = '5s'
+  grace_period = '15s'
+  method = 'GET'
+  path = '/'
 
 [[vm]]
   memory = '1gb'

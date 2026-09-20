@@ -62,12 +62,12 @@ Tests cover routing, storage/notification atomicity, restart persistence, duplic
 
 No public administration interface or inquiry export endpoint is exposed. Private records and secrets must not enter Git, Docker build contexts, static assets or application logs.
 
-## Production is gated
+## Production operations
 
-Keep changes on `refinement-local` until user sign-off; do not push or deploy without authorization. The proposed CI runs checks on pushes/PRs; deployment requires explicit manual dispatch from main and the `production` environment. The existing remote workflow is unchanged until these local commits are approved and pushed.
+The user approved the first refined release on 20 September 2026. Future releases still require user sign-off. CI runs checks on pushes/PRs; workflow deployment requires explicit manual dispatch from main and the `production` environment. See docs/releases/2026-09-20.md for the first release verification.
 
-Fly's root filesystem is ephemeral. The candidate deployment requires a separately provisioned Fly Volume mounted at `/data`, exactly one writer, independently stored backups and restore verification. The app refuses production startup without the real mount, expected database path and explicit storage confirmation. Telegram or SMTP credentials and confirmed recipients are also required. A mounted volume is not replication or protection against all hardware failure.
+Fly's root filesystem is ephemeral. The deployment uses a verified Fly Volume mounted at `/data` and exactly one writer. Fly snapshots retain 14 days; a local launch backup was restored and checked. Automated independent backups remain outstanding. The app refuses production startup without the real mount, expected database path and explicit storage confirmation. Telegram or SMTP credentials and confirmed recipients are also required. A mounted volume is not replication or protection against all hardware failure.
 
-Read [operations and release gates](docs/operations.md) before any infrastructure or deployment work. Live Fly volumes, live email delivery and production restore have not been verified locally. If multi-machine availability is required, move to a shared database before scaling.
+Read [operations and release gates](docs/operations.md) before any infrastructure or deployment work. Live volume persistence, Telegram delivery and a downloaded production database backup were verified on 20 September 2026; SMTP delivery has not been verified. If multi-machine availability is required, move to a shared database before scaling.
 
 See [refinement checklist](docs/refinement-plan.md) and [local validation record](docs/validation.md) for implementation status, evidence and remaining factual/operational decisions.

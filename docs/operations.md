@@ -10,7 +10,9 @@ The candidate `fly.toml` declares `intake_data`, one minimum running machine and
 
 A single volume protects against ordinary restart/deployment loss, not host failure. Accept the availability tradeoff explicitly, define recovery point/time targets, and configure independent off-host database backups. Fly snapshots (candidate retention 14 days) are a secondary recovery mechanism, not the primary backup. Backups contain private data and the signing key: restrict access, encrypt transport/storage, and keep them outside the repository and public assets.
 
-Read-only live inspection was attempted on 19 September 2026; no Fly login was available, so current machines and volumes are **unverified**. No infrastructure was provisioned or changed.
+On 20 September 2026, the user approved production deployment. The live app now uses one writer in yyz with encrypted volume intake_data (1 GiB) mounted at /data, scheduled Fly snapshots with 14-day retention, Telegram delivery and an HTTP health check. A synthetic SQLite record survived a machine restart and image update before launch. The production form test was saved, delivered to Telegram, included in a consistent backup downloaded to the operator computer, and retained across a production machine restart. See docs/releases/2026-09-20.md.
+
+Outstanding: automatic backups to an independent provider, their monitoring owner and recovery targets remain to be configured. Current protection is persistent storage, scheduled Fly snapshots and a verified local launch backup; do not describe this as automated off-provider backup.
 
 Sources: https://fly.io/docs/volumes/overview/ and https://fly.io/docs/reference/configuration/#the-mounts-section
 

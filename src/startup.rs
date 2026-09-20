@@ -50,7 +50,7 @@ pub fn run_with_store(
                 DefaultHeaders::new()
                     .add(("X-Content-Type-Options", "nosniff"))
                     .add(("Referrer-Policy", "strict-origin-when-cross-origin"))
-                    .add(("X-Frame-Options", "DENY")),
+                    .add(("X-Frame-Options", "SAMEORIGIN")),
             )
             .service(
                 web::resource("/")

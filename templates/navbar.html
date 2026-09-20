@@ -1,12 +1,12 @@
 <header class="site-header">
   <nav class="wrap navigation" aria-label="Main navigation">
     <a class="wordmark" href="/" aria-label="Pretiola home">Pretiola <span class="brand-pretzel" aria-hidden="true">&#x1F968;</span><span class="wordmark-sub">An independent initiative</span></a>
-    <div class="nav-links">
-      <a href="/#about">About</a>
-      <a href="/#advisory">How we help</a>
-      <a href="/#poc">Our work</a>
-      <a href="/for_ministries.html" {% if page_name == 'for_ministries' %}aria-current="page"{% endif %}>For ministries</a>
-      <a class="nav-contribute" href="/contribute.html" {% if page_name == 'contribute' %}aria-current="page"{% endif %}>Contribute </a>
-    </div>
+    <div class="desktop-navigation">{% include "nav_links.html" %}</div>
+    <details class="mobile-navigation">
+      <summary aria-label="Navigation menu"><span aria-hidden="true">≡</span><span class="social-label">Menu</span></summary>
+      {% include "nav_links.html" %}
+    </details>
   </nav>
 </header>
+
+<script src="/static/js/navigation.js" defer></script>

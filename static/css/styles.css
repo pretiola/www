@@ -189,7 +189,10 @@ code { font-size:.9em; overflow-wrap:anywhere; }
 .social-link svg { width:18px; height:18px; flex:none; }
 .project-section > .section-heading { width:min(1180px,calc(100% - 96px)); margin-inline:auto; }
 .project-feature { display:block; border:0; }
-.project-mark { min-height:280px; background:#3E2723; color:#FBF7ED; justify-content:center; gap:1rem; padding:4rem 1.5rem; border-block:3px solid #B8860B; }
+.project-mark { min-height:280px; aspect-ratio:16/10; background:linear-gradient(to top,rgba(30,18,15,.85),transparent 55%),url('/pictures/sr-dolores-foundation.webp') center 42% / cover no-repeat #3E2723; color:#FBF7ED; justify-content:flex-end; gap:.5rem; padding:2.5rem 1.5rem; border-block:3px solid #B8860B; text-decoration:none; }
+.project-mark:hover { color:#FBF7ED; }
+.project-mark:focus-visible { outline:3px solid #6B1D1D; outline-offset:5px; }
+@media(max-width:800px){ .project-mark { aspect-ratio:4/3; min-height:0; padding:1.5rem 1rem; } }
 .project-mark p:first-child { font-family:Georgia,serif; font-size:clamp(2.5rem,6vw,5rem); letter-spacing:-.03em; text-transform:none; }
 .project-copy { padding:3rem max(24px,calc((100% - 900px)/2)); }
 .contribution-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }

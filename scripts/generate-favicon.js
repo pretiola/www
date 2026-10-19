@@ -2,7 +2,7 @@ const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
 
-const source = path.join(__dirname, '../static/pictures/pretzel.png');
+const source = path.join(__dirname, '../static/pictures/pretzel-ornate.png');
 const outputDir = path.join(__dirname, '../static');
 
 const sizes = [

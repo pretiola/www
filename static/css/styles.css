@@ -78,6 +78,22 @@ img { display:block; max-width:100%; }
 .work-card .card-example { padding-top:1rem; margin-top:1.4rem; border-top:1px solid var(--line); font-size:.86rem; font-style:italic; }
 .work-card .small { font-size:.85rem; }
 .section-note { margin-top:1.7rem; }
+.faith-education { background:var(--cream); border-top:1px solid var(--line); }
+.faith-photo { margin-block:2.8rem; }
+.faith-photo img { width:100%; height:auto; }
+.faith-content { display:grid; grid-template-columns:1.1fr 1fr; gap:5rem; }
+.faith-series h3 { margin-block:1rem 1.3rem; font-size:2rem; }
+.faith-series > p:not(.eyebrow),.faith-topics dd { color:var(--muted); }
+.faith-series .button { margin-top:1.6rem; }
+.faith-topics h3 { margin-bottom:1.5rem; }
+.faith-topics dl { margin:0; }
+.faith-topics dl > div { padding-block:1rem; border-top:1px solid var(--line); }
+.faith-topics dt { font-weight:bold; margin-bottom:.35rem; }
+.faith-topics dd { margin:0; }
+.faith-resources { display:flex; flex-wrap:wrap; align-items:baseline; gap:1rem 2rem; margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--line); }
+.faith-resources a { font-size:.9rem; }
+.faith-resources span { color:var(--muted); }
+@media(max-width:800px){ .faith-content{grid-template-columns:1fr;gap:2.5rem} .faith-photo{margin-block:2rem} .faith-series .button{max-width:100%} .faith-resources{align-items:flex-start;flex-direction:column;gap:.8rem} }
 .process-section { background:#EDE0C8; border-block:1px solid var(--line); }
 .process-layout { display:grid; grid-template-columns:1fr 1fr; gap:6rem; }
 .process-layout .section-heading { margin:0; }

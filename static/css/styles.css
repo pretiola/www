@@ -79,6 +79,8 @@ img { display:block; max-width:100%; }
 .work-card .small { font-size:.85rem; }
 .section-note { margin-top:1.7rem; }
 /* Faith education follows the same full-width project layout as Binzi. */
+.faith-event { margin-top:2.5rem; padding:1.6rem 1.8rem; border-left:3px solid var(--gold); background:var(--paper); }
+.faith-event .button { margin-top:1.5rem; max-width:100%; }
 .faith-series { margin-top:2.5rem; padding-top:1rem; border-top:1px solid var(--line); }
 .faith-series > p { color:var(--muted); }
 .faith-series .button { margin-top:1.6rem; max-width:100%; }

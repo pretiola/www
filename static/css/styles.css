@@ -78,22 +78,14 @@ img { display:block; max-width:100%; }
 .work-card .card-example { padding-top:1rem; margin-top:1.4rem; border-top:1px solid var(--line); font-size:.86rem; font-style:italic; }
 .work-card .small { font-size:.85rem; }
 .section-note { margin-top:1.7rem; }
-.faith-education { background:var(--cream); border-top:1px solid var(--line); }
-.faith-photo { margin-block:2.8rem; }
-.faith-photo img { width:100%; height:auto; }
-.faith-content { display:grid; grid-template-columns:1.1fr 1fr; gap:5rem; }
-.faith-series h3 { margin-block:1rem 1.3rem; font-size:2rem; }
-.faith-series > p:not(.eyebrow),.faith-topics dd { color:var(--muted); }
-.faith-series .button { margin-top:1.6rem; }
-.faith-topics h3 { margin-bottom:1.5rem; }
-.faith-topics dl { margin:0; }
-.faith-topics dl > div { padding-block:1rem; border-top:1px solid var(--line); }
-.faith-topics dt { font-weight:bold; margin-bottom:.35rem; }
-.faith-topics dd { margin:0; }
+/* Faith education follows the same full-width project layout as Binzi. */
+.faith-series { margin-top:2.5rem; padding-top:1rem; border-top:1px solid var(--line); }
+.faith-series > p { color:var(--muted); }
+.faith-series .button { margin-top:1.6rem; max-width:100%; }
 .faith-resources { display:flex; flex-wrap:wrap; align-items:baseline; gap:1rem 2rem; margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--line); }
 .faith-resources a { font-size:.9rem; }
 .faith-resources span { color:var(--muted); }
-@media(max-width:800px){ .faith-content{grid-template-columns:1fr;gap:2.5rem} .faith-photo{margin-block:2rem} .faith-series .button{max-width:100%} .faith-resources{align-items:flex-start;flex-direction:column;gap:.8rem} }
+@media(max-width:800px){ .faith-resources{align-items:flex-start;flex-direction:column;gap:.8rem} }
 .process-section { background:#EDE0C8; border-block:1px solid var(--line); }
 .process-layout { display:grid; grid-template-columns:1fr 1fr; gap:6rem; }
 .process-layout .section-heading { margin:0; }
@@ -206,6 +198,7 @@ code { font-size:.9em; overflow-wrap:anywhere; }
 .project-section > .section-heading { width:min(1180px,calc(100% - 96px)); margin-inline:auto; }
 .project-feature { display:block; border:0; }
 .project-mark { min-height:280px; aspect-ratio:16/10; background:linear-gradient(to top,rgba(30,18,15,.85),transparent 55%),url('/pictures/sr-dolores-foundation.webp') center 42% / cover no-repeat #3E2723; color:#FBF7ED; justify-content:flex-end; gap:.5rem; padding:2.5rem 1.5rem; border-block:3px solid #B8860B; text-decoration:none; }
+.faith-mark { background-image:linear-gradient(to top,rgba(30,18,15,.85),transparent 55%),url('/pictures/faith-education/presentation-1672.webp'); background-position:center,right center; }
 .project-mark:hover { color:#FBF7ED; }
 .project-mark:focus-visible { outline:3px solid #6B1D1D; outline-offset:5px; }
 @media(max-width:800px){ .project-mark { aspect-ratio:4/3; min-height:0; padding:1.5rem 1rem; } }

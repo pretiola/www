@@ -206,6 +206,8 @@ code { font-size:.9em; overflow-wrap:anywhere; }
 @media(max-width:800px){ .project-mark { aspect-ratio:4/3; min-height:0; padding:1.5rem 1rem; } }
 .project-mark p:first-child { font-family:Georgia,serif; font-size:clamp(2.5rem,6vw,5rem); letter-spacing:-.03em; text-transform:none; }
 .project-copy { padding:3rem max(24px,calc((100% - 900px)/2)); }
+.faith-heading { padding-top:0; }
+.faith-heading h3 { margin-bottom:0; }
 .contribution-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
 @media(max-width:800px){ .contribution-grid{grid-template-columns:1fr} .project-section > .section-heading{width:calc(100% - 56px)} }
 @media(max-width:480px){ .project-section > .section-heading{width:calc(100% - 36px)} .nav-links .nav-contribute{padding:.65rem 1rem} }
